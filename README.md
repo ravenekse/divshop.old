@@ -1,44 +1,44 @@
 # Coming soon
 
-#TO-DO List - Panel
+# TO-DO List - Panel
 
-Strony - Panel: 
-✔ Dashboard
-✔ Administratorzy
-✔ Serwery
-✖ Usługi
-✖ Vouchery
-✖ Newsy
-✖ Historia zakupów
-✖ Logi
-✖ Konsola
-✖ Konto
-✖ Ustawienia
-✖ Moduły
-✖ Antybot
+Strony - Panel:<br>
+✔ Dashboard<br>
+✔ Administratorzy<br>
+✔ Serwery<br>
+✖ Usługi<br>
+✖ Vouchery<br>
+✖ Newsy<br>
+✖ Historia zakupów<br>
+✖ Logi<br>
+✖ Konsola<br>
+✖ Konto<br>
+✖ Ustawienia<br>
+✖ Moduły<br>
+✖ Antybot<br>
 
-Dodawanie - Panel:
-✔ - Dodawanie administratora
-✖ - Dodawanie serwera
-✖ - Dodawanie usługi
-✖ - Dodawanie vouchera
-✖ - Dodawanie newsa
+Dodawanie - Panel:<br>
+✔ - Dodawanie administratora<br>
+✖ - Dodawanie serwera<br>
+✖ - Dodawanie usługi<br>
+✖ - Dodawanie vouchera<br>
+✖ - Dodawanie newsa<br>
 
-Edycja - Panel:
-✔ Edycja administatora
-✖ Edycja serwera
-✖ Edycja usługi
-✖ Edycja vouchera
-✖ Edycja newsa
+Edycja - Panel:<br>
+✔ Edycja administatora<br>
+✖ Edycja serwera<br>
+✖ Edycja usługi<br>
+✖ Edycja vouchera<br>
+✖ Edycja newsa<br>
 
-Usuwanie - Panel:
-✔ Usuwanie administatora
-✖ Usuwanie serwera
-✖ Usuwanie usługi
-✖ Usuwanie vouchera
-✖ Usuwanie newsa
-
-
-Ukończone - 6
-Do zrobienia - 22
-Razem - 28
+Usuwanie - Panel:<br>
+✔ Usuwanie administatora<br>
+✖ Usuwanie serwera<br>
+✖ Usuwanie usługi<br>
+✖ Usuwanie vouchera<br>
+✖ Usuwanie newsa<br>
+<br>
+<br>
+Ukończone - 6<br>
+Do zrobienia - 22<br>
+Razem - 28<br>
