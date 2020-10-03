@@ -1,6 +1,4 @@
-# Coming soon
-
-# TO-DO List - Panel
+# TO-DO List
 
 Strony - Panel:<br>
 ✔ Dashboard<br>
@@ -41,4 +39,6 @@ Usuwanie - Panel:<br>
 <br>
 Ukończone - 6<br>
 Do zrobienia - 22<br>
-Razem - 28<br>
+Razem - 28<br><br>
+
+# Coming soon
