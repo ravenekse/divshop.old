@@ -8,7 +8,7 @@ Strony - Panel:<br>
 ✖ Vouchery<br>
 ✖ Newsy<br>
 ✖ Historia zakupów<br>
-✖ Logi<br>
+✔ Logi<br>
 ✖ Konsola<br>
 ✖ Konto<br>
 ✖ Ustawienia<br>
