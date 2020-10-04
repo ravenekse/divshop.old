@@ -37,8 +37,8 @@ Usuwanie - Panel:<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-Ukończone - 6<br>
-Do zrobienia - 22<br>
+Ukończone - 7<br>
+Do zrobienia - 21<br>
 Razem - 28<br><br>
 
 # Coming soon
