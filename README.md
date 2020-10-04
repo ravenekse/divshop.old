@@ -9,7 +9,7 @@ Strony - Panel:<br>
 ✖ Newsy<br>
 ✖ Historia zakupów<br>
 ✔ Logi<br>
-✔/✖ (50/50) Nieudane próby logowanie<br>
+✔ Nieudane próby logowanie<br>
 ✖ Konsola<br>
 ✖ Konto<br>
 ✖ Ustawienia<br>
@@ -38,8 +38,8 @@ Usuwanie - Panel:<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-Ukończone - 7.5<br>
-Do zrobienia - 21.5<br>
-Razem - 28<br><br>
+Ukończone - 8<br>
+Do zrobienia - 21<br>
+Razem - 29<br><br>
 
 # Coming soon
