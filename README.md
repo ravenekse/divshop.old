@@ -38,8 +38,8 @@ Usuwanie - Panel:<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-<span class="color: #08d43f;font-weight:bold;">Ukończone - 8</span><br>
-<span class="color: #e60707;font-weight:bold;">Do zrobienia - 21</span><br>
-<span class="color: #ffa800;font-weight:bold;">Razem - 29</span><br><br>
+Ukończone - 8<br>
+Do zrobienia - 21<br>
+Razem - 29<br><br>
 
 # Coming soon
