@@ -9,7 +9,7 @@ Strony - Panel:<br>
 ✖ Newsy<br>
 ✖ Historia zakupów<br>
 ✔ Logi<br>
-✔ Nieudane próby logowanie<br>
+✔ Nieudane próby logowania<br>
 ✖ Konsola<br>
 ✖ Konto<br>
 ✖ Ustawienia<br>
@@ -18,7 +18,7 @@ Strony - Panel:<br>
 
 Dodawanie - Panel:<br>
 ✔ - Dodawanie administratora<br>
-✖ - Dodawanie serwera<br>
+✔ - Dodawanie serwera<br>
 ✖ - Dodawanie usługi<br>
 ✖ - Dodawanie vouchera<br>
 ✖ - Dodawanie newsa<br>
@@ -32,14 +32,14 @@ Edycja - Panel:<br>
 
 Usuwanie - Panel:<br>
 ✔ Usuwanie administatora<br>
-✖ Usuwanie serwera<br>
+✔ Usuwanie serwera<br>
 ✖ Usuwanie usługi<br>
 ✖ Usuwanie vouchera<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-Ukończone - 9<br>
-Do zrobienia - 20<br>
+Ukończone - 11<br>
+Do zrobienia - 18<br>
 Razem - 29<br><br>
 
 # Coming soon
