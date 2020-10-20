@@ -25,7 +25,7 @@ Dodawanie - Panel:<br>
 
 Edycja - Panel:<br>
 ✔ Edycja administatora<br>
-✖ Edycja serwera<br>
+✔ Edycja serwera<br>
 ✖ Edycja usługi<br>
 ✖ Edycja vouchera<br>
 ✖ Edycja newsa<br>
@@ -38,8 +38,8 @@ Usuwanie - Panel:<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-Ukończone - 8<br>
-Do zrobienia - 21<br>
+Ukończone - 9<br>
+Do zrobienia - 20<br>
 Razem - 29<br><br>
 
 # Coming soon
