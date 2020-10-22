@@ -12,7 +12,7 @@ Strony - Panel:<br>
 ✔ Nieudane próby logowania<br>
 ✖ Konsola<br>
 ✖ Konto<br>
-✖ Ustawienia<br>
+✔ Ustawienia<br>
 ✖ Moduły<br>
 ✖ Antybot<br>
 
@@ -38,8 +38,8 @@ Usuwanie - Panel:<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-Ukończone - 11<br>
-Do zrobienia - 18<br>
+Ukończone - 12<br>
+Do zrobienia - 17<br>
 Razem - 29<br><br>
 
 # Coming soon
