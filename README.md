@@ -4,7 +4,7 @@ Strony - Panel:<br>
 ✔ Dashboard<br>
 ✔ Administratorzy<br>
 ✔ Serwery<br>
-✖ Usługi<br>
+✔ Usługi<br>
 ✖ Vouchery<br>
 ✖ Newsy<br>
 ✖ Historia zakupów<br>
@@ -38,8 +38,8 @@ Usuwanie - Panel:<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-Ukończone - 12<br>
-Do zrobienia - 17<br>
+Ukończone - 13<br>
+Do zrobienia - 16<br>
 Razem - 29<br><br>
 
 # Coming soon
