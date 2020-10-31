@@ -19,7 +19,7 @@ Strony - Panel:<br>
 Dodawanie - Panel:<br>
 ✔ - Dodawanie administratora<br>
 ✔ - Dodawanie serwera<br>
-✖ - Dodawanie usługi<br>
+✔ - Dodawanie usługi<br>
 ✖ - Dodawanie vouchera<br>
 ✖ - Dodawanie newsa<br>
 
@@ -33,13 +33,13 @@ Edycja - Panel:<br>
 Usuwanie - Panel:<br>
 ✔ Usuwanie administatora<br>
 ✔ Usuwanie serwera<br>
-✖ Usuwanie usługi<br>
+✔ Usuwanie usługi<br>
 ✖ Usuwanie vouchera<br>
 ✖ Usuwanie newsa<br>
 <br>
 <br>
-Ukończone - 13<br>
-Do zrobienia - 16<br>
+Ukończone - 15<br>
+Do zrobienia - 14<br>
 Razem - 29<br><br>
 
 # Coming soon
