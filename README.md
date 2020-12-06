@@ -7,7 +7,7 @@ Strony - Panel:<br>
 ✔ Usługi<br>
 ✔ Vouchery<br>
 ✖ Newsy<br>
-✖ Historia zakupów<br>
+✔ Historia zakupów<br>
 ✔ Logi<br>
 ✔ Nieudane próby logowania<br>
 ✖ Konsola<br>
