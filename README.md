@@ -59,6 +59,7 @@
   <li>PHP Mbstring</li>
   <li>PHP Zip</li>
   <li>Aktywny mod_rewrite</li>
+</ul>
 
 
 ## Instalacja sklepu
