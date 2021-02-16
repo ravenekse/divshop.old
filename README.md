@@ -55,7 +55,7 @@
 
 ## Licencja
 
-Oprogramowanie objęte jest licencją MIT. Jej treść dostępna jest w pliku `LICENSE`.
+Oprogramowanie objęte jest licencją MIT, a treść tej licencji dostępna jest w pliku `LICENSE`.
 
 
 
