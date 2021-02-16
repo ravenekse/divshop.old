@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://divshop.pro">
-    <img src="https://cdn-n.divshop.pro/images/divshop-logo.png" alt="Logo" width="770" height="443">
+    <img src="https://cdn-n.divshop.pro/images/divshop-logo.png" alt="Logo" width="450" height="253">
   </a>
 
   <h3 align="center">DIVShop.pro</h3>
