@@ -49,10 +49,31 @@
 
 
 
+## Wymagania
+
+<ul>
+  <li>Minimum PHP 5.6 (Zalecane PHP 7.0 lub wyższe)</li>
+  <li>Serwer MYSQL</li>
+  <li>PHP cURL</li>
+  <li>Działająca sesja w PHP</li>
+  <li>PHP Mbstring</li>
+  <li>PHP Zip</li>
+  <li>Aktywny mod_rewrite</li>
+
 
 ## Instalacja sklepu
  
-`TO-DO`
+<ol>
+  <li>Ściągnij paczkę ze sklepem(https://divshop.pro/files/DIVShop-1-0-Stable.zip)</li>
+  <li>Wrzuć pliki na serwer</li>
+  <li>Przejdź do witryny</li>
+  <li>Pojawi się informacja, że Instalator został wykryty. Przejdź do niego</li>
+  <li>Postępuj zgodnie z instrukcjami w Instalatorze</li>
+  <li>Po instalacji możesz przejść na stronę główną sklepu lub do ACP (przy logowaniu do ACP wpisz dane podane podczas instalacji)</li>
+  <li>Sklep jest gotowy do użycia</li>
+</ol>
+ 
+Dokładna instalacja sklepu znajduje się w naszej dokumentacji(https://divshop.pro/docs/#instalacja-divshop)
 
 
 
