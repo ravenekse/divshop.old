@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://divshop.pro">
-    <img src="https://cdn-n.divshop.pro/images/divshop-logo.png" alt="Logo" width="768" height="330">
+    <img src="https://cdn-n.divshop.pro/images/divshop-logo.png" alt="Logo" width="770" height="443">
   </a>
 
   <h3 align="center">DIVShop.pro</h3>
@@ -43,10 +43,6 @@
 
 ## O projekcie
 
-<p align="center">
-  <img src="https://cdn-n.divshop.pro/images/divshop-logo.png" alt="vMCShop Standard Mockup" width="768" height="648">
-</p>
-
 `TO-DO`
 
 
@@ -68,4 +64,5 @@ Oprogramowanie objęte jest licencją MIT. Jej treść dostępna jest w pliku `L
 E-mail — contact@divshop.pro
 
 Facebook — [DIVShop.pro](https://facebook.com/divshoppro)
+
 Discord - [Discord DIVShop.pro](https://divshop.pro/discord/)
