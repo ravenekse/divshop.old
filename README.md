@@ -34,7 +34,7 @@
 
 ## Spis treści
 
-* [O DIVShop.pro](#o-divshop)
+* [O DIVShop](#o-divshop)
 * [Wymagania](#wymagania)
 * [Instalacja](#instalacja-sklepu)
 * [Licencja](#licencja)
@@ -43,7 +43,7 @@
 
 
 
-## O DIVShop.pro
+## O DIVShop
 
 `TO-DO`
 
