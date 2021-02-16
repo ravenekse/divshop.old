@@ -65,7 +65,7 @@
 ## Instalacja sklepu
  
 <ol>
-  <li>Ściągnij paczkę ze <a href="https://divshop.pro/files/DIVShop-1-0-Stable.zip" target="_blank">sklepem</a></li>
+  <li>Ściągnij paczkę ze [sklepem](https://divshop.pro/files/DIVShop-1-0-Stable.zip)</li>
   <li>Wrzuć pliki na serwer</li>
   <li>Przejdź do witryny</li>
   <li>Pojawi się informacja, że Instalator został wykryty. Przejdź do niego</li>
