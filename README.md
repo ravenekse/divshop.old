@@ -34,28 +34,33 @@
 
 ## Spis treści
 
-* [O projekcie](#o-projekcie)
-* [Instalacja](#instalacja)
+* [O DIVShop.pro](#o-divshop)
+* [Wymagania](#wymagania)
+* [Instalacja](#instalacja-sklepu)
 * [Licencja](#licencja)
 * [Kontakt](#kontakt)
 
 
 
-## O projekcie
+
+## O DIVShop.pro
 
 `TO-DO`
 
 
 
-## Instalacja
+
+## Instalacja sklepu
  
 `TO-DO`
+
 
 
 
 ## Licencja
 
 Sklep objęty jest licencją MIT, a treść tej licencji dostępna jest w pliku `LICENSE`.
+
 
 
 
