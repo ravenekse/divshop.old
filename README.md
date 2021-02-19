@@ -45,7 +45,7 @@
 
 ## O DIVShop
 
-`TO-DO`
+DIVShop.pro to sklep o otwartym kodzie źródłowym, pisany z myślą o serwerach Minecraft.
 
 
 
