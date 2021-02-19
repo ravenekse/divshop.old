@@ -92,4 +92,4 @@ E-mail — contact@divshop.pro
 
 Facebook — [DIVShop.pro](https://facebook.com/divshoppro)
 
-Discord - [Discord DIVShop.pro](https://divshop.pro/discord/)
+Discord — [Discord DIVShop.pro](https://divshop.pro/discord/)
