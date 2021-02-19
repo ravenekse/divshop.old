@@ -18,12 +18,8 @@
     <a href="https://divshop.pro/discord/">Discord</a>
   </p>
   <p align="center">
-    <a href="#">
-      <img src="https://img.shields.io/packagist/dm/divshop/divshop" alt="DIVShop.pro Packagist">
-    </a>
-    <a href="#">
-      <img src="https://img.shields.io/github/v/release/divshop/divshop?include_prereleases&sort=semver" alt="DIVShop.pro Latest version">
-    </a>
+    <img src="https://img.shields.io/packagist/dm/divshop/divshop" alt="DIVShop.pro Packagist">
+    <img src="https://img.shields.io/github/v/release/divshop/divshop?include_prereleases&sort=semver" alt="DIVShop.pro Latest version">
     <a href="https://divshop.pro/discord/">
       <img src="https://img.shields.io/discord/768411593288712194?label=discord" alt="DIVShop.pro Discord">
     </a>
