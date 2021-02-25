@@ -31,9 +31,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <input id="authAdminPass" type="password" class="form-control" name="authAdminPass" tabindex="2">
                                         <div class="d-block mb-5">
                                             <div class="float-right">
-                                                <a href="<?php echo $this->config->base_url('admin/auth/forgotpassword') ?>" class="text-small">
-                                                Nie pamiętasz hasła?
-                                                </a>
                                             </div>
                                         </div>
                                     </div>

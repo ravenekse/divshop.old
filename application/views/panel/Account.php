@@ -86,7 +86,6 @@
                                                         <label class="col-xl-3 col-lg-3 col-form-label">Stare hasło <span class="text-danger" data-toggle="tooltip" title="Pole wymagane">*</span> </label>
                                                         <div class="col-lg-9 col-xl-9">
                                                             <input type="password" class="form-control" name="adminPassOld">
-                                                            <small class="text-muted">Nie pamiętasz hasła? <a href="<?php echo $this->config->base_url('admin/auth/forgotpassword'); ?>" target="_blank">Przypomnij je!</a></small>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
