@@ -197,7 +197,7 @@
                                                         </div>
                                                         <small>Pola oznaczone <span class="text-danger">*</span> są wymagane</small>
                                                         <div class="text-center">
-                                                            <button class="btn btn-divshop mt-3 btnBuyService"><i class="fas fa-check"></i>&nbsp;&nbsp;Zakup usługę</button>
+                                                            <button class="btn btn-divshop mt-3 btnBuyService"><i class="fas fa-check"></i>&nbsp;&nbsp;Przejdź dalej</button>
                                                         </div>
                                                     <?php echo($settings['demoMode'] == 0) ? form_close() : '</form>'; ?>
                                                 </div>
