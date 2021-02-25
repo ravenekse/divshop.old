@@ -499,7 +499,7 @@ class Add extends CI_Controller {
         $this->form_validation->set_rules('pageTitle', 'pageTitle', 'required|trim');
         $this->form_validation->set_rules('pageIcon', 'pageIcon', 'trim');
         $this->form_validation->set_rules('pageLink', 'pageLink', 'trim');
-        $this->form_validation->set_rules('pageContent', 'pageContent', 'required|trim');
+        $this->form_validation->set_rules('pageContent', 'pageContent', 'trim');
         $this->form_validation->set_rules('pageActive', 'pageActive', 'trim');
 
         if($this->form_validation->run() === TRUE) {
