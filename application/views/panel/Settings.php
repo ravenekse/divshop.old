@@ -222,7 +222,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Nazwa Bota wysyłąjącego wiadomości <span class="text-danger" data-toggle="tooltip" title="Pole wymagane">*</span></label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Nazwa Bota wysyłającego wiadomości <span class="text-danger" data-toggle="tooltip" title="Pole wymagane">*</span></label>
                                                         <div class="col-lg-9 col-xl-9">
                                                             <input type="text" class="form-control" name="settingsWebhookBotName" value="<?php echo $settings['shopDiscordWebhookBotName']; ?>">
                                                         </div>

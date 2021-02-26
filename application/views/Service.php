@@ -29,8 +29,10 @@
                     <div class="card">
                         <div class="row">
                             <div class="col-md-6">
-                                <img class="divshop-service-purchase-image" src="<?php echo $service['image']; ?>" alt="<?php echo $service['name']; ?> image">
-                                <div style="border-bottom: 2px solid rgba(119,119,119,0.25);"></div>
+                                <?php if($service['image'] != null): ?>
+                                    <img class="divshop-service-purchase-image" src="<?php echo $service['image']; ?>" alt="<?php echo $service['name']; ?> image">
+                                    <div style="border-bottom: 2px solid rgba(119,119,119,0.25);"></div>
+                                <?php endif; ?>
                                 <div class="divshop-service-info">
                                     <h4 class="title text-center mb-2"><?php echo $service['name']; ?></h4>
                                     <p>
