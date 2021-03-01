@@ -62,6 +62,9 @@
 
                             <p>Za chwilę przejdziesz krok po kroku przez proces instalacji swojego sklepu.</p>
                             <p>Aby kontynuować wciśnij przycisk "Dalej"</p>
+                            <br>
+                            <p><b>UWAGA!</b> Jeżeli posiadasz certyfikat SSL i chciałbyś zainstalować sklep z certyfikatem SSL, </p>
+                            <p>zwróć uwagę czy w adresie URL znajduje się <b>https://</b> (symboliczna kłódka)</p>
                         </div>
                         
                         <div class="step-item" data-step="2">
