@@ -62,7 +62,7 @@ DIVShop.pro to sklep o otwartym kodzie źródłowym, pisany z myślą o serwerac
 ## Instalacja sklepu
  
 <ol>
-  <li>Ściągnij paczkę ze <a href="https://divshop.pro/files/DIVShop-1-0-0-Stable.zip" target="_blank">sklepem</a></li>
+  <li>Ściągnij paczkę ze <a href="https://divshop.pro/files/DIVShop.pro-1-0-0-Stable.zip" target="_blank">sklepem</a></li>
   <li>Wrzuć pliki na serwer</li>
   <li>Przejdź do witryny</li>
   <li>Pojawi się informacja, że Instalator został wykryty. Przejdź do niego</li>
