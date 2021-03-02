@@ -305,7 +305,8 @@ CREATE TABLE `divs_settings` (
   `recaptchaSecretKey` varchar(120) DEFAULT NULL,
   `demoMode` int(1) DEFAULT 0,
   `pageActive` int(1) NOT NULL DEFAULT 1 COMMENT 'Page status:\r\n • 0 - Inactive\r\n • 1 - Active',
-  `pageBreakDescription` varchar(999) NOT NULL DEFAULT 'Przerwa techniczna',
+  `pageBreakTitle` varchar(999) NOT NULL,
+  `pageBreakDescription` varchar(999) DEFAULT NULL,
   `smsOperator` int(1) NOT NULL DEFAULT 1,
   `panelNotes` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -314,8 +315,8 @@ CREATE TABLE `divs_settings` (
 -- Zrzut danych tabeli `divs_settings`
 --
 
-INSERT INTO `divs_settings` (`id`, `pageTitle`, `pageDescription`, `pageTags`, `pageCharset`, `pageLogo`, `pageFavicon`, `pageBackground`, `pageCustomCSS`, `pagePreloader`, `voucherPrfx`, `voucherLength`, `pageSidebarPosition`, `pageTheme`, `shopDiscordWebhookEnabled`, `shopDiscordWebhookUrl`, `shopDiscordWebhookEmbedTitle`, `shopDiscordWebhookDesc`, `shopDiscordWebhookHex`, `shopDiscordWebhookBotName`, `recaptchaSiteKey`, `recaptchaSecretKey`, `demoMode`, `pageActive`, `pageBreakDescription`, `smsOperator`, `panelNotes`) VALUES
-(1, 'DIVShop.pro - Sklep dla serwerów Minecraft', 'DIVShop.pro to projekt sklepu dla serwerów Minecraft', NULL, 'utf-8', 'https://cdn-n.divshop.pro/images/divshop-logo.png', 'https://cdn-n.divshop.pro/images/divshop-avatar.png', NULL, NULL, 1, 'divs_', 10, 0, 'defaultlight', 0, NULL, 'Zakupiono usługę', 'Gracz {BUYER} zakupił usługę {SERVICE}', '2c3e50', 'DIVShop.pro', '', '', 0, 1, 'Przerwa techniczna', 1, 'Dziękujemy za wybranie i instalację naszego sklepu.\r\n\r\nPozdrawiamy - Zespół DIVShop.pro');
+INSERT INTO `divs_settings` (`id`, `pageTitle`, `pageDescription`, `pageTags`, `pageCharset`, `pageLogo`, `pageFavicon`, `pageBackground`, `pageCustomCSS`, `pagePreloader`, `voucherPrfx`, `voucherLength`, `pageSidebarPosition`, `pageTheme`, `shopDiscordWebhookEnabled`, `shopDiscordWebhookUrl`, `shopDiscordWebhookEmbedTitle`, `shopDiscordWebhookDesc`, `shopDiscordWebhookHex`, `shopDiscordWebhookBotName`, `recaptchaSiteKey`, `recaptchaSecretKey`, `demoMode`, `pageActive`, `pageBreakTitle`, `pageBreakDescription`, `smsOperator`, `panelNotes`) VALUES
+(1, 'DIVShop.pro - Sklep dla serwerów Minecraft', 'DIVShop.pro to projekt sklepu dla serwerów Minecraft', NULL, 'utf-8', 'https://cdn-n.divshop.pro/images/divshop-logo.png', 'https://cdn-n.divshop.pro/images/divshop-avatar.png', NULL, NULL, 1, 'divs_', 10, 0, 'defaultlight', 0, NULL, 'Zakupiono usługę', 'Gracz {BUYER} zakupił usługę {SERVICE}', '2c3e50', 'DIVShop.pro', '', '', 0, 1, 'Przerwa techniczna', NULL, 1, 'Dziękujemy za wybranie i instalację naszego sklepu.\r\n\r\nPozdrawiamy - Zespół DIVShop.pro');
 
 -- --------------------------------------------------------
 
