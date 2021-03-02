@@ -48,7 +48,7 @@ class DIVShopAPI {
 		$this->api_url = 'https://api.divshop.pro/';
 		$this->api_key = '8A01F27E4C22FE47C673';
 		$this->api_language = 'polish';
-		$this->current_version = '1.0.0 Stable';
+		$this->current_version = '1.0.1 Stable';
 		$this->current_path = getcwd();
 		$this->root_path = realpath($this->current_path.'/..');
 		$this->license_file = $this->current_path.'/.lic';
