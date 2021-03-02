@@ -76,44 +76,103 @@ class Dashboard extends CI_Controller {
             }
             array_push($bodyD['servers'], $server);
         }
+
         $bodyD['purchases'] = array();
         $profit = 0;
-        $todayTS = time(); $today = getOnlyDate($todayTS);
-        $yesterdayTS = $todayTS - 86400; $yesterday = getOnlyDate($yesterdayTS);
-        $twoDaysAgoTS = $yesterdayTS - 86400; $twoDaysAgo = getOnlyDate($twoDaysAgoTS);
-        $threeDaysAgoTS = $twoDaysAgoTS - 86400; $threeDaysAgo = getOnlyDate($threeDaysAgoTS);
-        $fourDaysAgoTS = $threeDaysAgoTS - 86400; $fourDaysAgo = getOnlyDate($fourDaysAgoTS);
-        $fiveDaysAgoTS = $fourDaysAgoTS - 86400; $fiveDaysAgo = getOnlyDate($fiveDaysAgoTS);
-        $sixDaysAgoTS = $fiveDaysAgoTS - 86400; $sixDaysAgo = getOnlyDate($sixDaysAgoTS);
-        $todayPurchases = array(); $yesterdayP = array(); $twoDaysAgoP = array(); $threeDaysAgoP = array(); $fourDaysAgoP = array(); $fiveDaysAgoP = array(); $sixDaysAgoP = array();
+        $timestamp = array(
+            'today' => getOnlyDate(time()),
+            'yesterday' => getOnlyDate(time() - 86400),
+            'twoDaysAgo' => getOnlyDate(time() - 172800),
+            'threeDaysAgo' => getOnlyDate(time() - 259200),
+            'fourDaysAgo' => getOnlyDate(time() - 345600),
+            'fiveDaysAgo' => getOnlyDate(time() - 432000),
+            'sixDaysAgo' => getOnlyDate(time() - 518400)
+        );
+        $whenPurchased = array(
+            'today' => array(),
+            'yesterday' => array(),
+            'twoDaysAgo' => array(),
+            'threeDaysAgo' => array(),
+            'fourDaysAgo' => array(),
+            'fiveDaysAgo' => array(),
+            'sixDaysAgo' => array()
+        );
         foreach($purchases as $purchase) {
-            $profit += $purchase['profit'];
-            if(getOnlyDate($purchase['date']) == $today) array_push($todayPurchases, $purchase);
-            if(getOnlyDate($purchase['date']) == $yesterday) array_push($yesterdayP, $purchase);
-            if(getOnlyDate($purchase['date']) == $twoDaysAgo) array_push($twoDaysAgoP, $purchase);
-            if(getOnlyDate($purchase['date']) == $threeDaysAgo) array_push($threeDaysAgoP, $purchase);
-            if(getOnlyDate($purchase['date']) == $fourDaysAgo) array_push($fourDaysAgoP, $purchase);
-            if(getOnlyDate($purchase['date']) == $fiveDaysAgo) array_push($fiveDaysAgoP, $purchase);
-            if(getOnlyDate($purchase['date']) == $sixDaysAgo) array_push($sixDaysAgoP, $purchase);
+            if($purchase['status'] == "success") {
+                $profit += $purchase['profit'];
+                switch(getOnlyDate($purchase['date'])) {
+                    case $timestamp['today']:
+                        array_push($whenPurchased['today'], $purchase);
+                        break;
+                    case $timestamp['yesterday']:
+                        array_push($whenPurchased['yesterday'], $purchase);
+                        break;
+                    case $timestamp['twoDaysAgo']:
+                        array_push($whenPurchased['twoDaysAgo'], $purchase);
+                        break;
+                    case $timestamp['threeDaysAgo']:
+                        array_push($whenPurchased['threeDaysAgo'], $purchase);
+                        break;
+                    case $timestamp['fourDaysAgo']:
+                        array_push($whenPurchased['fourDaysAgo'], $purchase);
+                        break;
+                    case $timestamp['fiveDaysAgo']:
+                        array_push($whenPurchased['fiveDaysAgo'], $purchase);
+                        break;
+                    case $timestamp['sixDaysAgo']:
+                        array_push($whenPurchased['sixDaysAgo'], $purchase);
+                        break;
+                }   
+            }
         }
-        if(getDayNumber($todayTS) == 7) { $bodyD['chartValues'] = count($sixDaysAgoP) . ", " . count($fiveDaysAgoP) . ", " . count($fourDaysAgoP) . ", " . count($threeDaysAgoP) . ", " . count($twoDaysAgoP) . ", " . count($yesterdayP) . ", " . count($todayPurchases); $highest = max(count($todayPurchases), count($yesterdayP), count($twoDaysAgoP), count($threeDaysAgoP), count($fourDaysAgoP), count($fiveDaysAgoP), count($sixDaysAgoP)); }
-        if(getDayNumber($todayTS) == 6) { $bodyD['chartValues'] = count($fiveDaysAgoP) . ", " . count($fourDaysAgoP) . ", " . count($threeDaysAgoP) . ", " . count($twoDaysAgoP) . ", " . count($yesterdayP) . ", " . count($todayPurchases); $highest = max(count($todayPurchases), count($yesterdayP), count($twoDaysAgoP), count($threeDaysAgoP), count($fourDaysAgoP), count($fiveDaysAgoP)); }
-        if(getDayNumber($todayTS) == 5) { $bodyD['chartValues'] = count($fourDaysAgoP) . ", " . count($threeDaysAgoP) . ", " . count($twoDaysAgoP) . ", " . count($yesterdayP) . ", " . count($todayPurchases); $highest = max(count($todayPurchases), count($yesterdayP), count($twoDaysAgoP), count($threeDaysAgoP), count($fourDaysAgoP)); }
-        if(getDayNumber($todayTS) == 4) { $bodyD['chartValues'] = count($threeDaysAgoP) . ", " . count($twoDaysAgoP) . ", " . count($yesterdayP) . ", " . count($todayPurchases); $highest = max(count($todayPurchases), count($yesterdayP), count($twoDaysAgoP), count($threeDaysAgoP)); }
-        if(getDayNumber($todayTS) == 3) { $bodyD['chartValues'] = count($twoDaysAgoP) . ", " . count($yesterdayP) . ", " . count($todayPurchases); $highest = max(count($todayPurchases), count($yesterdayP), count($twoDaysAgoP)); }
-        if(getDayNumber($todayTS) == 2) { $bodyD['chartValues'] = count($yesterdayP) . ", " . count($todayPurchases); $highest = max(count($todayPurchases), count($yesterdayP)); }
-        if(getDayNumber($todayTS) == 1) { $bodyD['chartValues'] = count($todayPurchases); $highest = count($todayPurchases); }
-        if(in_array($highest, array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))) { $bodyD['chartHighest'] = 10; } else { $bodyD['chartHighest'] = round(($highest * 1.3), 2); }
-        $yesterdayTransactions = count($yesterdayP);
-        $todayTransactions = count($todayPurchases);
-        if(($todayTransactions == 0) && ($yesterdayTransactions == 0)) {
+        switch(getDayNumber(time())) {
+            case 1:
+                $body['chartValues'] = count($whenPurchased['today']);
+                $highest = count($whenPurchased['today']);
+                break;
+            case 2:
+                $bodyD['chartValues'] = (count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
+                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']));
+                break;
+            case 3:
+                $bodyD['chartValues'] = (count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
+                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']));
+                break;
+            case 4:
+                $bodyD['chartValues'] = (count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
+                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']), count($whenPurchased['fourDaysAgo']));
+                break;
+            case 5:
+                $bodyD['chartValues'] = (count($whenPurchased['fiveDaysAgo']) . ', ' . count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
+                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']), count($whenPurchased['fourDaysAgo']), count($whenPurchased['fiveDaysAgo']));
+                break;
+            case 6:
+                $bodyD['chartValues'] = (count($whenPurchased['sixDaysAgo']) . ', ' . count($whenPurchased['fiveDaysAgo']) . ', ' . count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
+                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']), count($whenPurchased['fourDaysAgo']), count($whenPurchased['fiveDaysAgo']), count($whenPurchased['sixDaysAgo']));
+                break;
+            case 7:
+                $bodyD['chartValues'] = (count($whenPurchased['sixDaysAgo']) . ', ' . count($whenPurchased['sixDaysAgo']) . ', ' . count($whenPurchased['fiveDaysAgo']) . ', ' . count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
+                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']), count($whenPurchased['fourDaysAgo']), count($whenPurchased['fiveDaysAgo']), count($whenPurchased['sixDaysAgo']));
+                break;
+        }
+
+        if(in_array($highest, array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))) {
+            $bodyD['chartHighest'] = 10;
+        } else {
+            $bodyD['chartHighest'] = round($highest * 1.3, 2);
+        }
+        $transactionsCount = array(
+            'today' => count($whenPurchased['today']),
+            'yesterday' => count($whenPurchased['yesterday'])
+        );
+        if($transactionsCount['today'] == 0 && $transactionsCount['yesterday'] == 0) {
             $bodyD['percentTransactions'] = 0;
-        } else if($todayTransactions == 0) {
+        } else if($transactionsCount['today'] == 0) {
             $bodyD['percentTransactions'] = -100;
-        } else if($yesterdayTransactions == 0) {
+        } else if($transactionsCount['yesterday'] == 0) {
             $bodyD['percentTransactions'] = 100;
         } else {
-            $bodyD['percentTransactions'] = round((($todayTransactions * 100) / $yesterdayTransactions) - 100, 0);
+            $bodyD['percentTransactions'] = round($transactionsCount['today'] * 100 / $transactionsCount['yesterday'] - 100, 0);
         }
 
         $bodyD['lastPurchases'] = $this->PurchasesM->getLastFive();
