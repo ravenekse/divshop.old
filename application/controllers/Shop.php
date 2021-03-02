@@ -28,7 +28,10 @@ class Shop extends CI_Controller {
 
 			/**  Body section  */
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
@@ -197,7 +200,10 @@ class Shop extends CI_Controller {
 
 			/**  Body section  */
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
         } else {

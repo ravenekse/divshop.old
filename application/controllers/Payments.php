@@ -31,7 +31,10 @@ class Payments extends CI_Controller {
 
 			
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
@@ -226,7 +229,10 @@ class Payments extends CI_Controller {
 
 			
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
@@ -372,7 +378,10 @@ class Payments extends CI_Controller {
 
 			
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
@@ -428,7 +437,10 @@ class Payments extends CI_Controller {
 
 			
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
@@ -624,7 +636,10 @@ class Payments extends CI_Controller {
 
 			
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
@@ -750,7 +765,10 @@ class Payments extends CI_Controller {
 
 			
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
@@ -1057,7 +1075,10 @@ class Payments extends CI_Controller {
 
 			
 			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = $bodyD['pageBreak']['pageBreakDescription'];
+			$bodyD['pageBreak'] = array(
+                'title' => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription']
+            );
 			$this->load->view('components/PageBreak', $bodyD);
 
 		} else {
