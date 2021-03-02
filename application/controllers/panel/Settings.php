@@ -42,7 +42,8 @@ class Settings extends CI_Controller {
         $this->form_validation->set_rules('settingsPageCharset', 'settingsPageCharset', 'required|trim');
         $this->form_validation->set_rules('settingsPagePreloader', 'settingsPagePreloader', 'trim');
         $this->form_validation->set_rules('settingsPageEnabled', 'settingsPageEnabled', 'trim');
-        $this->form_validation->set_rules('settingsPageBreakDescription', 'settingsPageBreakDescription', 'required|trim');
+        $this->form_validation->set_rules('settingsPageBreakTitle', 'settingsPageBreakTitle', 'required|trim');
+        $this->form_validation->set_rules('settingsPageBreakDescription', 'settingsPageBreakDescription', 'trim');
         $this->form_validation->set_rules('settingsVoucherPrfx', 'settingsVoucherPrfx', 'required|trim');
         $this->form_validation->set_rules('settingsVoucherLength', 'settingsVoucherLength', 'required|trim');
         $this->form_validation->set_rules('settingsPageBackground', 'settingsPageBackground', 'trim');
@@ -67,7 +68,8 @@ class Settings extends CI_Controller {
             $data['pageDescription'] = ($this->input->post('settingsPageDescription') == null) ? null : $this->input->post('settingsPageDescription');
             $data['pageTags'] = ($this->input->post('settingsPageTags') == null) ? null : $this->input->post('settingsPageTags');
             $data['pageCharset'] = $this->input->post('settingsPageCharset');
-            $data['pageBreakDescription'] = $this->input->post('settingsPageBreakDescription');
+            $data['pageBreakTitle'] = $this->input->post('settingsPageBreakTitle');
+            $data['pageBreakDescription'] = ($this->input->post('settingsPageBreakDescription') == null) ? null : $this->input->post('settingsPageBreakDescription');
             $pagePreloader = $this->input->post('settingsPagePreloader');
             $pageEnabled = $this->input->post('settingsPageEnabled');
             if((isset($pagePreloader)) && ($pagePreloader != null)) $pagePreloader = true; else $pagePreloader = false;

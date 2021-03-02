@@ -106,7 +106,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-xl-3 col-lg-3 col-form-label">Powód wyłączonej strony <span class="text-danger" data-toggle="tooltip" title="Pole wymagane">*</span></label>
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Tytuł wyłączonej strony <span class="text-danger" data-toggle="tooltip" title="Pole wymagane">*</span></label>
+                                                        <div class="col-lg-9 col-xl-9">
+                                                            <input type="text" class="form-control" name="settingsPageBreakTitle" value="<?php echo $settings['pageBreakTitle']; ?>">
+                                                            <small class="text-muted">Wyświetlany tekst podczas gdy strona jest wyłączona</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Powód wyłączonej strony</label>
                                                         <div class="col-lg-9 col-xl-9">
                                                             <textarea class="form-control panel-notes" name="settingsPageBreakDescription" rows="3" style="height: 98px;"><?php echo $settings['pageBreakDescription']; ?></textarea>
                                                             <small class="text-muted">Wyświetlany tekst podczas gdy strona jest wyłączona</small>
