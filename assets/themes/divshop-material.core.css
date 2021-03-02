@@ -24,7 +24,10 @@ p {
 a {
     transition: 0.2s all;
 }
-
+.page-break > h1,
+.page-break > p {
+    word-wrap: break-word;
+}
 /*================================*/
 /*  Navbar styles
 /*================================*/
@@ -61,10 +64,10 @@ a {
     left: 2px;
 }
 .navbar .divshop-navbar-logo {
-    max-width: 250px;
-    width: 100%;
+    max-height: 250px;
+    height: 100%;
     position: absolute;
-    left: 0;
+    left: 30px;
     top: 50%;
     transform: translate(0, -50%);
 }
@@ -87,6 +90,7 @@ a {
     font-family: 'Roboto Slab', sans-serif !important;
     font-size: 36px;
     font-weight: 600;
+    word-wrap: break-word;
 }
 
 /*================================*/

@@ -27,6 +27,10 @@ body {
     background: #21242c;
     color: #fff;
 }
+.page-break > h1,
+.page-break > p {
+    color: #fff !important;
+}
 
 /*================================*/
 /*  Navbar styles
