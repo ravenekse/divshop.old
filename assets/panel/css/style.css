@@ -2802,6 +2802,19 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     opacity: 1.0; }
   100% {
     -webkit-transform: scale(1.2, 1.2);
-    opacity: 0.0; } }
+    opacity: 0.0; 
+  } 
+}
 
+.changelog {
+  max-height: 300px;
+  overflow-y: auto;
+  background: #21242c;
+  padding: 15px;
+  border-radius: 4px;
+}
+.changelog .changelog-pl ul > li,
+.changelog .changelog-pl ol > li {
+  margin-left: 40px;
+}
 /*# sourceMappingURL=style.css.map */

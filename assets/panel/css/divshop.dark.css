@@ -154,6 +154,13 @@ body.dark-theme.sidebar-mini .main-sidebar::after {
 .dark-theme .service-command {
     border-bottom-color: #353a46;
 }
+.dark-theme #update-app p,
+.dark-theme #update-app {
+    color: #fff;
+}
+.dark-theme .changelog {
+    color: #fff;
+}
 /*****************************/
 /*  CONFIRMS
 /****************************/
