@@ -23,7 +23,7 @@ if($divsAPI['divsConnection']['status'] != true): ?>
             <i class="fas fa-check-circle"></i>
         </div>
         <div class="text-center mr-auto ml-auto">
-            <?php echo $divsAPI['divsUpdate']['message']; ?> <a href="<?php echo $this->config->base_url('update'); ?>">Aktualizuj</a>
+            <?php echo $divsAPI['divsUpdate']['message']; ?> <a href="<?php echo $this->config->base_url('panel/updates'); ?>">Aktualizuj</a>
         </div>
     </div>
 <?php endif; ?>

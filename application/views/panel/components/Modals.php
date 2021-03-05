@@ -343,7 +343,7 @@
                     </div>
                     <div class="modal-footer bg-whitesmoke br">
                         <button type="button" class="btn btn-background-transparent text-danger text-uppercase mr-auto" data-dismiss="modal">Zamknij</button>
-                        <a href="<?php echo $this->config->base_url('update'); ?>" class="btn btn-background-transparent text-info text-uppercase">Aktualizuj</button>
+                        <a href="<?php echo $this->config->base_url('panel/updates'); ?>" class="btn btn-background-transparent text-info text-uppercase">Aktualizuj</button>
                     </div>
                 </div>
             </div>

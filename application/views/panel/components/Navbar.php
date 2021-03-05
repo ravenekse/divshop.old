@@ -115,6 +115,9 @@ $errors = 0;
                 <a href="<?php echo $this->config->base_url('panel/modules'); ?>" class="dropdown-item has-icon"> 
                     <i class="fas fa-layer-group" style="position: relative; top: 2px;"></i> Moduły
                 </a>
+                <a href="<?php echo $this->config->base_url('panel/updates'); ?>" class="dropdown-item has-icon"> 
+                    <i class="fas fa-download" style="position: relative; top: 2px;"></i> Aktualizator
+                </a>
                 <div class="dropdown-divider"></div>
                 <a href="<?php echo $this->config->base_url('admin/logout?fromLogout=acp'); ?>" class="dropdown-item has-icon text-danger"> 
                     <i class="fas fa-sign-out-alt" style="position: relative; top: 2px;"></i> Wyloguj się
