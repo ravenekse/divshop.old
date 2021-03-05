@@ -70,8 +70,7 @@ class Modules extends CI_Controller {
             } else {
                 $data['details'] = "Użytkownik dezaktywował moduł <strong>" . getModuleName($moduleName) . "</strong>";
             }
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if ($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
             $this->LogsM->add($data);
 

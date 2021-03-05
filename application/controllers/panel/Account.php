@@ -117,8 +117,7 @@ class Account extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Kreator | Administratorzy";
             $data['details'] = "Użytkownik edytował ustawienia <strong>swojego konta</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);

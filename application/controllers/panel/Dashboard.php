@@ -135,20 +135,20 @@ class Dashboard extends CI_Controller {
                 $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']));
                 break;
             case 3:
+                $bodyD['chartValues'] = (count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
+                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']));
+                break;
+            case 4:
                 $bodyD['chartValues'] = (count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
                 $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']));
                 break;
-            case 4:
+            case 5:
                 $bodyD['chartValues'] = (count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
                 $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']), count($whenPurchased['fourDaysAgo']));
                 break;
-            case 5:
+            case 6:
                 $bodyD['chartValues'] = (count($whenPurchased['fiveDaysAgo']) . ', ' . count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
                 $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']), count($whenPurchased['fourDaysAgo']), count($whenPurchased['fiveDaysAgo']));
-                break;
-            case 6:
-                $bodyD['chartValues'] = (count($whenPurchased['sixDaysAgo']) . ', ' . count($whenPurchased['fiveDaysAgo']) . ', ' . count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
-                $highest = max(count($whenPurchased['today']), count($whenPurchased['yesterday']), count($whenPurchased['twoDaysAgo']), count($whenPurchased['threeDaysAgo']), count($whenPurchased['fourDaysAgo']), count($whenPurchased['fiveDaysAgo']), count($whenPurchased['sixDaysAgo']));
                 break;
             case 7:
                 $bodyD['chartValues'] = (count($whenPurchased['sixDaysAgo']) . ', ' . count($whenPurchased['sixDaysAgo']) . ', ' . count($whenPurchased['fiveDaysAgo']) . ', ' . count($whenPurchased['fourDaysAgo']) . ', ' . count($whenPurchased['threeDaysAgo']) . ', ' . count($whenPurchased['twoDaysAgo']) . ', ' . count($whenPurchased['yesterday']) . ', ' . count($whenPurchased['today']));
@@ -210,8 +210,7 @@ class Dashboard extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Notatki";
             $data['details'] = "Użytkownik edytował notatki.";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
             $this->LogsM->add($data);
         

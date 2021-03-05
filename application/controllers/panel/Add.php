@@ -82,8 +82,7 @@ class Add extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Kreator | Administratorzy";
             $data['details'] = "Użytkownik dodał <strong>administratora</strong> o nazwie <strong>" . $adminName . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -178,8 +177,7 @@ class Add extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Kreator | Serwery";
             $data['details'] = "Użytkownik dodał <strong>serwer</strong> o nazwie <strong>" . $serverName . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -293,8 +291,7 @@ class Add extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Kreator | Serwery";
             $data['details'] = "Użytkownik dodał <strong>usługę</strong> o nazwie <strong>" . $serviceName . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -375,8 +372,7 @@ class Add extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Kreator | Vouchery";
             $data['details'] = "Użytkownik wygenerował <strong>" . count($vouchers) . "</strong> voucherów dla usługi <strong>" . $service['name'] . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -457,8 +453,7 @@ class Add extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Kreator | Aktualności";
             $data['details'] = "Użytkownik dodał <strong>newsa</strong> o tytule <strong>" . $newsTitle . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -537,8 +532,7 @@ class Add extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Kreator | Aktualności";
             $data['details'] = "Użytkownik dodał <strong>" . $type . "</strong> o nazwie <strong>" . $pageTitle . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);

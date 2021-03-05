@@ -43,8 +43,7 @@ class Remove extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Usuwanie | Administratorzy";
             $data['details'] = "Użytkownik usunął <strong>administratora</strong> o nazwie <strong>" . $admin['name'] . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -132,8 +131,7 @@ class Remove extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Usuwanie | Serwery";
             $data['details'] = "Użytkownik usunął <strong>serwer</strong> o nazwie <strong>" . $server['name'] . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             array_push($logs, $data);
@@ -143,8 +141,7 @@ class Remove extends CI_Controller {
                     $data['user'] = $_SESSION['name'];
                     $data['section'] = "Usuwanie | Usługi";
                     $data['details'] = "Użytkownik usunął <strong>usługę</strong> o nazwie <strong>" . $sService['name'] . "</strong>";
-                    $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-                    if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+                    $data['logIP'] = $this->input->ip_address();
                     $data['time'] = time();
                     array_push($logs, $data);
                 }
@@ -154,8 +151,7 @@ class Remove extends CI_Controller {
                     $data['user'] = $_SESSION['name'];
                     $data['section'] = "Usuwanie | Vouchery";
                     $data['details'] = "Użytkownik usunął <strong>voucher</strong> o nazwie <strong>" . $sVoucher['name'] . "</strong>";
-                    $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-                    if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+                    $data['logIP'] = $this->input->ip_address();
                     $data['time'] = time();
                     array_push($logs, $data);
                 }
@@ -229,8 +225,7 @@ class Remove extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Usuwanie | Usługi";
             $data['details'] = "Użytkownik usunął <strong>usługę</strong> o nazwie <strong>" . $service['name'] . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             array_push($logs, $data);
@@ -240,6 +235,7 @@ class Remove extends CI_Controller {
                     $data['user'] = $_SESSION['name'];
                     $data['section'] = "Usuwanie | Vouchery";
                     $data['details'] = "Użytkownik usunął <strong>voucher</strong> o ID <strong>#" . $sVoucher['id'] . "</strong>.";
+                    $data['logIP'] = $this->input->ip_address();
                     $data['date'] = time();
                     array_push($logs, $data);
                 }
@@ -281,8 +277,7 @@ class Remove extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Usuwanie | Newsy";
             $data['details'] = "Użytkownik usunął <strong>newsa</strong> o nazwie <strong>" . $news['title'] . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -321,8 +316,7 @@ class Remove extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Usuwanie | Strony";
             $data['details'] = "Użytkownik usunął <strong>stronę</strong> o nazwie <strong>" . $page['title'] . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -361,8 +355,7 @@ class Remove extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Usuwanie | Vouchery";
             $data['details'] = "Użytkownik usunął <strong>voucher</strong> o ID <strong>#" . $voucher['id'] . " (Kod vouchera: " . $voucher['code'] . ")</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);

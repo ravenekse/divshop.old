@@ -57,16 +57,10 @@ class Admin extends CI_Controller {
 
             if(!$adminLogin = $this->AdminsM->getBy('name', $adminLogin)) {
 
-                $data['lastIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-                if($data['lastIP'] == "::1") $data['lastIP'] = "127.0.0.1";
-                $ipAddress = $data['lastIP'];
-                $data['lastLogin'] = time();
-                unset($data);
-
                 $data['user'] = $this->input->post('authAdminLogin');
                 $data['section'] = "Nieudane logowanie";
                 $data['details'] = "Nieprawidłowy login";
-                $data['ipAddress'] = $ipAddress;
+                $data['ipAddress'] = $this->input->ip_address();
                 $data['time'] = time();
 
                 $this->load->model('FailedLoginsM');
@@ -76,17 +70,11 @@ class Admin extends CI_Controller {
                 redirect($this->config->base_url('admin/auth'));
             }
             if(!password_verify($adminPass, $adminLogin['password'])) {
-                
-                $data['lastIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-                if($data['lastIP'] == "::1") $data['lastIP'] = "127.0.0.1";
-                $ipAddress = $data['lastIP'];
-                $data['lastLogin'] = time();
-                unset($data);
 
                 $data['user'] = $this->input->post('authAdminLogin');
                 $data['section'] = "Nieudane logowanie";
                 $data['details'] = "Nieprawidłowe hasło";
-                $data['ipAddress'] = $ipAddress;
+                $data['ipAddress'] = $this->input->ip_address();
                 $data['time'] = time();
 
                 $this->load->model('FailedLoginsM');
@@ -97,17 +85,14 @@ class Admin extends CI_Controller {
             }
 
             $this->session->set_userdata('logged', TRUE);
-            $domain = '.' . $_SERVER['HTTP_HOST'];
-            set_cookie('isLogged', 'isLogged', 7200, $domain, '/', '', null, null);
             $this->session->set_userdata('name', $adminLogin['name']);
             $this->session->set_userdata('email', $adminLogin['email']);
             $this->session->set_userdata('avatar', $adminLogin['image']);
 
-            $data['lastIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['lastIP'] == "::1") $data['lastIP'] = "127.0.0.1";
+            $data['lastIP'] = $this->input->ip_address();
             $ipAddress = $data['lastIP'];
             $data['lastLogin'] = time();
-            $data['browser'] = $_SERVER['HTTP_USER_AGENT'];
+            $data['browser'] = $this->input->user_agent();
 
             $this->AdminsM->update($adminLogin['id'], $data);
             unset($data);
@@ -115,8 +100,7 @@ class Admin extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Logowanie";
             $data['details'] = "Adres IP z którego się zalogowano: " . $ipAddress;
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $ipAddress;
             $data['time'] = time();
             $this->LogsM->add($data);
 
@@ -137,7 +121,6 @@ class Admin extends CI_Controller {
 
     public function logout() {
         $this->session->unset_userdata(array('logged', 'name', 'email', 'avatar'));
-        delete_cookie('isLogged');
         $_SESSION['messageSuccessSmall'] = "Pomyślnie wylogowano!";
         sleep(1);
         if(htmlspecialchars($_GET['fromLogout']) == "acp") {

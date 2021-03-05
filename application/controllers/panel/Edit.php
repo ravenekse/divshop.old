@@ -118,8 +118,7 @@ class Edit extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Edytor | Administratorzy";
             $data['details'] = "Użytkownik edytował <strong>administratora</strong> o nazwie <strong>" . $adminName . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -231,8 +230,7 @@ class Edit extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Edytor | Serwery";
             $data['details'] = "Użytkownik edytował <strong>serwer</strong> o nazwie <strong>" . $serverName . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -390,8 +388,7 @@ class Edit extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Edytor | Usługi";
             $data['details'] = "Użytkownik edytował <strong>usługę</strong> o nazwie <strong>" . $serviceName . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -490,8 +487,7 @@ class Edit extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Edytor | Newsy";
             $data['details'] = "Użytkownik edytował <strong>newsa</strong> o tytule <strong>" . $newsTitle . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
@@ -593,8 +589,7 @@ class Edit extends CI_Controller {
             $data['user'] = $_SESSION['name'];
             $data['section'] = "Edytor | Strony";
             $data['details'] = "Użytkownik edytował <strong>" . $type . "</strong> o nazwie <strong>" . $pageTitle . "</strong>";
-            $data['logIP'] = getenv('HTTP_CLIENT_IP') ? : getenv('HTTP_X_FORWARDED_FOR') ? : getenv('HTTP_X_FORWARDED') ? : getenv('HTTP_FORWARDED_FOR') ? : getenv('HTTP_FORWARDED') ? : getenv('REMOTE_ADDR');
-            if($data['logIP'] == "::1") $data['logIP'] = "127.0.0.1";
+            $data['logIP'] = $this->input->ip_address();
             $data['time'] = time();
 
             $this->LogsM->add($data);
