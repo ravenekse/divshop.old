@@ -131,3 +131,14 @@ small, .small {
     font-family: 'Barlow', sans-serif;
 }
 
+/*================================*/
+/*  Preloader style
+/*================================*/
+#loader-wrapper .loader-section {
+    background: #21242c;
+}
+#loader,
+#loader::before,
+#loader::after {
+    border-top-color:#bdbdbd;
+}
