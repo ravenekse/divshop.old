@@ -25,7 +25,7 @@
 								<?php foreach($servers as $server): ?>
 									<div class="divshop-server">
 										<div class="divshop-server-info-container">
-											<h4 class="divshop-server-name">Serwer <?php echo $server['name']; ?></h4>
+											<h4 class="divshop-server-name">Serwer <?php echo xss_clean($server['name']); ?></h4>
 											<span class="divshop-server-ip-address badge badge-default divshop-copy-btn" id="divshop-copy<?php echo $server['id']; ?>" data-clipboard-text="<?php echo($server['showPort'] == 0) ? $server['ip'] : $server['ip'] . ':' . $server['port']; ?>" data-toggle="tooltip" title="Kliknij, aby skopiować IP" onclick="divshopCopyIP<?php echo $server['id']; ?>()"><?php echo($server['showPort'] == 0) ? $server['ip'] : $server['ip'] . ':' . $server['port']; ?></span>
 											<script type="text/javascript">
 												function divshopCopyIP<?php echo $server['id']; ?>() {
@@ -127,14 +127,14 @@
 									<?php foreach($lastBuyers as $lastBuyer): ?>
 										<?php 
 											$buyerInfo = array(
-												'buyerName'      =>   "<span class='divshop-last-buy-info'>Kupujący: </span>" . $lastBuyer['buyerName'] . "<br>",
-												'purchased'      =>   "<span class='divshop-last-buy-info'>Usługa: </span>" . $lastBuyer['service'] . "<br>",
-												'server'         =>   "<span class='divshop-last-buy-info'>Serwer: </span>" . $lastBuyer['server'] . "<br>",
+												'buyerName'      =>   "<span class='divshop-last-buy-info'>Kupujący: </span>" . xss_clean($lastBuyer['buyerName']) . "<br>",
+												'purchased'      =>   "<span class='divshop-last-buy-info'>Usługa: </span>" . xss_clean($lastBuyer['service']) . "<br>",
+												'server'         =>   "<span class='divshop-last-buy-info'>Serwer: </span>" . xss_clean($lastBuyer['server']) . "<br>",
 												'purchaseDate'   =>   "<span class='divshop-last-buy-info'>Data zakupu: </span>" . formatDate($lastBuyer['date'])
 											);
 										?>
 										<?php if($lastBuyer['status'] == "success"): ?>
-											<img src="<?php echo 'https://mc-heads.net/avatar/' . $lastBuyer['buyerName'] . '/50'; ?>" class="divshop-buyer-avatar" alt="<?php echo $lastBuyer['buyerName']; ?>'s avatar" data-toggle="tooltip" data-html="true" title="<?php echo $buyerInfo['buyerName'] . $buyerInfo['purchased'] . $buyerInfo['server'] . $buyerInfo['purchaseDate']; ?>">
+											<img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($lastBuyer['buyerName']) . '/50'; ?>" class="divshop-buyer-avatar" alt="<?php echo xss_clean($lastBuyer['buyerName']); ?>'s avatar" data-toggle="tooltip" data-html="true" title="<?php echo $buyerInfo['buyerName'] . $buyerInfo['purchased'] . $buyerInfo['server'] . $buyerInfo['purchaseDate']; ?>">
 										<?php endif; ?>
 									<?php endforeach; ?>
 								<?php endif; ?>
@@ -156,7 +156,7 @@
 										</div>
 									<?php endif; ?>
 									<div class="divshop-news-content" <?php echo($news['image'] == null) ? 'style="flex:0 0 100%;max-width:100%;"' : ''; ?>>
-										<a href="<?php echo $this->config->base_url('news/' . $news['id'] . '-' . getNewsUrl($news['title'])); ?>"><h3 class="card-title divshop-news-title"><?php echo character_limiter($news['title'], 90); ?></h3></a>
+										<a href="<?php echo $this->config->base_url('news/' . $news['id'] . '-' . getNewsUrl(xss_clean($news['title']))); ?>"><h3 class="card-title divshop-news-title"><?php echo character_limiter(xss_clean($news['title']), 90); ?></h3></a>
 										<p class="card-description divshop-news-description">
 											<?php echo character_limiter($news['content'], 200); ?>
 										</p>
@@ -167,7 +167,7 @@
 											
 											<div class="divshop-news-read-button">
 												<?php if(strlen($news['content']) > 200): ?>
-													<a href="<?php echo $this->config->base_url('news/' . $news['id'] . '-' . getNewsUrl($news['title'])); ?>" class="btn btn-divshop btn-sm btn-round">Czytaj dalej&nbsp;&nbsp;<i class="fas fa-angle-double-right"></i></a>
+													<a href="<?php echo $this->config->base_url('news/' . $news['id'] . '-' . getNewsUrl(xss_clean($news['title']))); ?>" class="btn btn-divshop btn-sm btn-round">Czytaj dalej&nbsp;&nbsp;<i class="fas fa-angle-double-right"></i></a>
 												<?php endif; ?>
 											</div>
 											

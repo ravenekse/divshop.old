@@ -37,13 +37,13 @@
                                         <tr class="divshop-table-element">
                                             <td class="text-center">
                                                 <div class="d-block d-md-flex justify-content-center align-items-center">
-                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . $ban['name'] . '/36'; ?>" alt="<?php echo $ban['name']; ?>" class="img-fluid rounded">
-                                                    <span class="ml-md-4"><?php echo $ban['name']; ?></span>
+                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($ban['name']) . '/36'; ?>" alt="<?php echo xss_clean($ban['name']); ?>" class="img-fluid rounded">
+                                                    <span class="ml-md-4"><?php echo xss_clean($ban['name']); ?></span>
                                                 </div>
                                             </td>
                                             <td class="d-flex justify-content-center">
                                                 <div class="d-block d-md-flex align-items-center">
-                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . $ban['operator'] . '/36'; ?>" alt="<?php echo $ban['operator']; ?>" class="img-fluid rounded">
+                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($ban['operator']) . '/36'; ?>" alt="<?php echo xss_clean($ban['operator']); ?>" class="img-fluid rounded">
                                                     <span class="ml-md-4"><?php echo $ban['operator']; ?></span>
                                                 </div>
                                             </td>

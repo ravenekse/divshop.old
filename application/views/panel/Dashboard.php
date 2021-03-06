@@ -196,8 +196,8 @@
                             <tr>
                               <td class="pt-3">#<?php echo $lastPurchase['id']; ?></td>
                               <td>
-                                <div class="avatar avatar-custom-size avatar-not-circle" data-toggle="tooltip" title="<?php echo $lastPurchase['buyerName']; ?>">
-                                  <img src="<?php echo 'https://mc-heads.net/avatar/' . $lastPurchase['buyerName'] . '/50'; ?>" alt="<?php echo $lastPurchase['buyerName']; ?>">
+                                <div class="avatar avatar-custom-size avatar-not-circle" data-toggle="tooltip" title="<?php echo xss_clean($lastPurchase['buyerName']); ?>">
+                                  <img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($lastPurchase['buyerName']) . '/50'; ?>" alt="<?php echo xss_clean($lastPurchase['buyerName']); ?>">
                                 </div>
                               </td>
                               <td class="pt-3"><?php echo $lastPurchase['server']; ?></td>
@@ -245,7 +245,7 @@
                             <img src="<?php echo $this->config->base_url('assets/images/default_avatar.png'); ?>" alt="Failed Login">
                           </div>
                           <div class="failedlogin-info">
-                            <div class="failedlogin-username"><?php echo $failedLogin['user']; ?></div>
+                            <div class="failedlogin-username"><?php echo xss_clean($failedLogin['user']); ?></div>
                             <div class="failedlogin-date"><?php echo formatDate($failedLogin['time']); ?></div>
                           </div>
                         </div>

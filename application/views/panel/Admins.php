@@ -61,10 +61,10 @@
                                                     </div>
                                                 </td>
                                                 <td class="pt-3"><?php echo $admin['name']; ?></td>
-                                                <td class="pt-3"><?php echo($admin['email'] != null) ? $admin['email'] : 'Brak adresu e-mail'; ?></td>
+                                                <td class="pt-3"><?php echo($admin['email'] != null) ? xss_clean($admin['email']) : 'Brak adresu e-mail'; ?></td>
                                                 <td>
                                                     <span data-toggle="tooltip" title="Kliknij, aby pokazać lub ukryć przeglądarkę">
-                                                        <button type="button" class="btn btn-primary btn-sm" data-container="body" data-toggle="popover" data-placement="left" data-content="<?php echo($admin['browser'] != null) ? $admin['browser'] : 'Nie dostępne'; ?>">
+                                                        <button type="button" class="btn btn-primary btn-sm" data-container="body" data-toggle="popover" data-placement="left" data-content="<?php echo($admin['browser'] != null) ? xss_clean($admin['browser']) : 'Nie dostępne'; ?>">
                                                         <i class="fas fa-eye"></i>
                                                         </button>
                                                     </span>
@@ -73,7 +73,7 @@
                                                     <?php if($settings['demoMode'] == 1 && $admin['lastIP'] != null): ?>
                                                         W demo ukryte
                                                     <?php elseif($settings['demoMode'] != 1 && $admin['lastIP']): ?>
-                                                        <?php echo $admin['lastIP']; ?>
+                                                        <?php echo xss_clean($admin['lastIP']); ?>
                                                     <?php elseif($admin['lastIP'] == null): ?>
                                                         Niedostępne
                                                     <?php endif; ?>

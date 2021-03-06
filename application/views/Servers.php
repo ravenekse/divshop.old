@@ -28,7 +28,7 @@
                                         <div class="divshop-server-image" style="background: url('<?php echo $server['image']; ?>');"></div>
                                         <div class="card-body">
                                             <div class="text-center">
-                                                <h4 class="title mt-2 mb-5">Serwer <?php echo $server['name']; ?></h4>
+                                                <h4 class="title mt-2 mb-5">Serwer <?php echo xss_clean($server['name']); ?></h4>
                                                 <?php if(isset($server['status'])): ?>
                                                     <div class="divshop-server-status-container">
                                                         <span id="checking-status-box<?php echo $server['id']; ?>">
@@ -103,7 +103,7 @@
                                                         </script>
                                                     </div>
                                                 <?php endif; ?>
-                                                <a href="<?php echo $this->config->base_url('shop/' . $server['id'] . '-' . getShopUrl($server['name'])); ?>" class="btn btn-success btn-link btn-link-custom btn-sm">Przejdź do sklepu</a>
+                                                <a href="<?php echo $this->config->base_url('shop/' . $server['id'] . '-' . getShopUrl(xss_clean($server['name']))); ?>" class="btn btn-success btn-link btn-link-custom btn-sm">Przejdź do sklepu</a>
                                             </div>
                                         </div>
                                     </div>

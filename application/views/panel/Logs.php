@@ -46,12 +46,12 @@
                                     <tbody>
                                         <?php foreach($logs as $log): ?>
                                             <tr>
-                                                <td class="pt-3"><?php echo $log['user']; ?></td>
+                                                <td class="pt-3"><?php echo xss_clean($log['user']); ?></td>
                                                 <td class="pt-3"><?php echo getLogBadge($log['section']); ?></td>
                                                 <td class="pt-3">
                                                     <?php if($log['section'] == "Logowanie"):
-                                                            if($settings['demoMode'] == 1 && strpos($log['details'], $log['logIP'])):
-                                                                echo str_replace($log['logIP'], 'W demo ukryte', $log['details']);
+                                                            if($settings['demoMode'] == 1 && strpos($log['details'], xss_clean($log['logIP']))):
+                                                                echo str_replace(xss_clean($log['logIP']), 'W demo ukryte', $log['details']);
                                                             else:
                                                                 echo $log['details'];
                                                             endif;
@@ -63,7 +63,7 @@
                                                     <?php if($settings['demoMode'] == 1 && $log['logIP'] != null):
                                                         echo "W demo ukryte";
                                                     elseif($log['logIP'] != null):
-                                                        echo $log['logIP'];
+                                                        echo xss_clean($log['logIP']);
                                                     elseif($log['logIP'] == null):
                                                         echo "Brak";
                                                     endif; ?>

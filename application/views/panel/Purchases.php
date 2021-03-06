@@ -53,8 +53,8 @@
                                             <tr>
                                                 <td class="pt-3">#<?php echo $lastPurchase['id']; ?></td>
                                                 <td>
-                                                    <div class="avatar avatar-custom-size avatar-not-circle" data-toggle="tooltip" title="<?php echo $lastPurchase['buyerName']; ?>">
-                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . $lastPurchase['buyerName'] . '/50'; ?>" alt="<?php echo $lastPurchase['buyerName']; ?>">
+                                                    <div class="avatar avatar-custom-size avatar-not-circle" data-toggle="tooltip" title="<?php echo xss_clean($lastPurchase['buyerName']); ?>">
+                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($lastPurchase['buyerName']) . '/50'; ?>" alt="<?php echo xss_clean($lastPurchase['buyerName']); ?>">
                                                     </div>
                                                 </td>
                                                 <td class="pt-3"><?php echo $lastPurchase['service']; ?></td>
@@ -75,7 +75,7 @@
                                                         break;
                                                   endswitch; ?>
                                                 </td>
-                                                <td class="pt-3"><?php echo($lastPurchase['details'] != null) ? $lastPurchase['details'] : '---'; ?></td>
+                                                <td class="pt-3"><?php echo($lastPurchase['details'] != null) ? xss_clean($lastPurchase['details']) : '---'; ?></td>
                                                 <td class="pt-4"><?php echo($lastPurchase['payId'] != null) ? $lastPurchase['payId'] : '---'; ?></td>
                                                 <td class="pt-3">
                                                     <?php if($lastPurchase['status'] == "failed"): ?>

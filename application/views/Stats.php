@@ -39,15 +39,15 @@
                                             <td>
                                                 <div class="d-block d-md-flex float-left justify-content-center align-items-center">
                                                     <span class="mr-3"><?php echo $playerPos++; ?></span>
-                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . $playerStat['name'] . '/36'; ?>" alt="<?php echo $playerStat['name']; ?>" class="img-fluid rounded player-image">
-                                                    <span class="ml-4"><?php echo $playerStat['name']; ?></span>
+                                                    <img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($playerStat['name']) . '/36'; ?>" alt="<?php echo xss_clean($playerStat['name']); ?>" class="img-fluid rounded player-image">
+                                                    <span class="ml-4"><?php echo xss_clean($playerStat['name']); ?></span>
                                                 </div>
                                             </td>
                                             <td class="pt-3"><?php echo $playerStat['points']; ?></td>
                                             <td class="pt-3"><?php echo $playerStat['kills']; ?></td>
                                             <td class="pt-3"><?php echo $playerStat['deaths']; ?></td>
                                             <?php if($playerStat['guild'] != null): ?>
-                                                <td class="pt-3"><?php echo $playerStat['guild']; ?></td>
+                                                <td class="pt-3"><?php echo xss_clean($playerStat['guild']); ?></td>
                                             <?php else: ?>
                                                 <td class="pt-3">Brak gildii</td>
                                             <?php endif; ?>

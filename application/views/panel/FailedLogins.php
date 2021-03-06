@@ -46,14 +46,14 @@
                                     <tbody>
                                         <?php foreach($failedlogins as $failedlogin): ?>
                                             <tr>
-                                                <td class="pt-3"><?php echo $failedlogin['user']; ?></td>
+                                                <td class="pt-3"><?php echo xss_clean($failedlogin['user']); ?></td>
                                                 <td class="pt-3"><?php echo $failedlogin['section']; ?></td>
                                                 <td class="pt-3"><?php echo $failedlogin['details']; ?></td>
                                                 <td class="pt-3">
                                                     <?php if($settings['demoMode'] == 1 && $failedlogin['ipAddress'] != null):
                                                         echo "W demo ukryte";
                                                     elseif($failedlogin['ipAddress'] != null):
-                                                        echo $failedlogin['ipAddress'];
+                                                        echo xss_clean($failedlogin['ipAddress']);
                                                     elseif($failedlogin['ipAddress'] == null):
                                                         echo "Brak";
                                                     endif; ?>

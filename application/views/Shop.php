@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <div class="divshop-server">
                                 <div class="divshop-server-info-container">
-                                    <h4 class="divshop-server-name">Serwer <?php echo $server['name']; ?></h4>
+                                    <h4 class="divshop-server-name">Serwer <?php echo xss_clean($server['name']); ?></h4>
                                     <span class="divshop-server-ip-address badge badge-default divshop-copy-btn" id="divshop-copy<?php echo $server['id']; ?>" data-clipboard-text="<?php echo($server['showPort'] == 0) ? $server['ip'] : $server['ip'] . ':' . $server['port']; ?>" data-toggle="tooltip" title="Kliknij, aby skopiować IP" onclick="divshopCopyIP<?php echo $server['id']; ?>()"><?php echo($server['showPort'] == 0) ? $server['ip'] : $server['ip'] . ':' . $server['port']; ?></span>
                                     <script type="text/javascript">
                                         function divshopCopyIP<?php echo $server['id']; ?>() {
@@ -121,14 +121,14 @@
 									<?php foreach($lastBuyers as $lastBuyer): ?>
 										<?php 
 											$buyerInfo = array(
-												'buyerName'      =>   "<span class='divshop-last-buy-info'>Kupujący: </span>" . $lastBuyer['buyerName'] . "<br>",
-												'purchased'      =>   "<span class='divshop-last-buy-info'>Usługa: </span>" . $lastBuyer['service'] . "<br>",
-												'server'         =>   "<span class='divshop-last-buy-info'>Serwer: </span>" . $lastBuyer['server'] . "<br>",
+												'buyerName'      =>   "<span class='divshop-last-buy-info'>Kupujący: </span>" . xss_clean($lastBuyer['buyerName']) . "<br>",
+												'purchased'      =>   "<span class='divshop-last-buy-info'>Usługa: </span>" . xss_clean($lastBuyer['service']) . "<br>",
+												'server'         =>   "<span class='divshop-last-buy-info'>Serwer: </span>" . xss_clean($lastBuyer['server']) . "<br>",
 												'purchaseDate'   =>   "<span class='divshop-last-buy-info'>Data zakupu: </span>" . formatDate($lastBuyer['date'])
 											);
 										?>
 										<?php if($lastBuyer['status'] == "success"): ?>
-											<img src="<?php echo 'https://mc-heads.net/avatar/' . $lastBuyer['buyerName'] . '/50'; ?>" class="divshop-buyer-avatar" alt="<?php echo $lastBuyer['buyerName']; ?>'s avatar" data-toggle="tooltip" data-html="true" title="<?php echo $buyerInfo['buyerName'] . $buyerInfo['purchased'] . $buyerInfo['server'] . $buyerInfo['purchaseDate']; ?>">
+											<img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($lastBuyer['buyerName']) . '/50'; ?>" class="divshop-buyer-avatar" alt="<?php echo xss_clean($lastBuyer['buyerName']); ?>'s avatar" data-toggle="tooltip" data-html="true" title="<?php echo $buyerInfo['buyerName'] . $buyerInfo['purchased'] . $buyerInfo['server'] . $buyerInfo['purchaseDate']; ?>">
 										<?php endif; ?>
 									<?php endforeach; ?>
 								<?php endif; ?>
@@ -156,11 +156,11 @@
                                     <div class="card divshop-service">
                                         <?php if($service['image'] != null): ?>
                                             <div class="divshop-service-image" style="background: url('<?php echo $service['image']; ?>');">
-                                                <img class="divshop-service-image-medium" src="<?php echo $service['image']; ?>" alt="<?php echo $service['name']; ?>">
+                                                <img class="divshop-service-image-medium" src="<?php echo $service['image']; ?>" alt="<?php echo xss_clean($service['name']); ?>">
                                             </div>
                                         <?php endif; ?>
                                         <div class="divshop-service-content" <?php echo($service['image'] == null) ? 'style="flex:0 0 100%;max-width:100%;"' : ''; ?>>
-                                            <h3 class="card-title divshop-service-title"><?php echo character_limiter($service['name'], 40); ?></h3>
+                                            <h3 class="card-title divshop-service-title"><?php echo character_limiter(xss_clean($service['name']), 40); ?></h3>
                                             <p class="card-description divshop-service-description">
                                                 <?php echo character_limiter($service['description'], 170); ?>
                                             </p>
