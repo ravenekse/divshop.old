@@ -50,7 +50,7 @@ class DIVShopAPI {
 		$this->api_language = 'polish';
 		$this->current_version = '1.1.1 Stable';
 		$this->current_path = getcwd();
-		$this->root_path = realpath($this->current_path.'/..');
+		$this->root_path = realpath($this->current_path);
 		$this->license_file = $this->current_path.'/.lic';
 	}
 
