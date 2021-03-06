@@ -53,8 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" integrity="sha512-LpYyC7eFJzyRwTakq6AiaOLJ68ySmYwkFgMx7BTw+QITLSH0rEyxMHcd0gdYvvQH1Ymx+OMXV5ZiLtsWKlFwmA==" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn-n.divshop.pro/css/libraries/notiflix.min.css" integrity="sha512-UpHNZ/zazlucQOFheajXg8/++Dj6GMMqdBFSxgl2xODL9vJRhWJpU1c7G51ccrc11hIXZTwVH+Ml0KDMPU4wpg==" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn-n.divshop.pro/css/divshop.custom.min.css" integrity="sha512-zrW2+XBdFfjy5kB33PqBLQlhkrbKDeOgu2FmXec/SxqHVePO6esoSXNaXbUjhvQRDSzjZaOBoLNEf8tts4sQJw==" crossorigin="anonymous">
+        <link rel="stylesheet" href="<?php echo $this->config->base_url('assets/css/notiflix.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo $this->config->base_url('assets/css/divshop.custom.min.css'); ?>">
         <?php if($settings['pageCustomCSS'] != null): ?>
             <link rel="stylesheet" href="<?php echo $settings['pageCustomCSS']; ?>">
         <?php endif; ?>
