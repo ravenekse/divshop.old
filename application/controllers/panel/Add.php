@@ -24,7 +24,6 @@ class Add extends CI_Controller {
         $api = new DIVShopAPI();
         $this->load->model('ModulesM');
         $bodyD['divsAPI'] = array(
-            'divsConnection'   =>   $api->check_connection(),
             'divsVersion'      =>   $api->get_current_version(),
             'divsUpdate'       =>   $api->check_update()
         );
@@ -105,7 +104,6 @@ class Add extends CI_Controller {
         $this->load->model('ModulesM');
         $api = new DIVShopAPI();
         $bodyD['divsAPI'] = array(
-            'divsConnection'   =>   $api->check_connection(),
             'divsVersion'      =>   $api->get_current_version(),
             'divsUpdate'       =>   $api->check_update()
         );
@@ -201,7 +199,6 @@ class Add extends CI_Controller {
         $this->load->model('PaymentsM');
         $api = new DIVShopAPI();
         $bodyD['divsAPI'] = array(
-            'divsConnection'   =>   $api->check_connection(),
             'divsVersion'      =>   $api->get_current_version(),
             'divsUpdate'       =>   $api->check_update()
         );
@@ -314,7 +311,6 @@ class Add extends CI_Controller {
         $this->load->model('ModulesM');
         $api = new DIVShopAPI();
         $bodyD['divsAPI'] = array(
-            'divsConnection'   =>   $api->check_connection(),
             'divsVersion'      =>   $api->get_current_version(),
             'divsUpdate'       =>   $api->check_update()
         );
@@ -393,7 +389,6 @@ class Add extends CI_Controller {
         $this->load->model('ModulesM');
         $api = new DIVShopAPI();
         $bodyD['divsAPI'] = array(
-            'divsConnection'   =>   $api->check_connection(),
             'divsVersion'      =>   $api->get_current_version(),
             'divsUpdate'       =>   $api->check_update()
         );
@@ -475,7 +470,6 @@ class Add extends CI_Controller {
         $this->load->model('ModulesM');
         $api = new DIVShopAPI();
         $bodyD['divsAPI'] = array(
-            'divsConnection'   =>   $api->check_connection(),
             'divsVersion'      =>   $api->get_current_version(),
             'divsUpdate'       =>   $api->check_update()
         );

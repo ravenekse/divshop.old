@@ -7,17 +7,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-if($divsAPI['divsConnection']['status'] != true): ?>
-    <div class="alert alert-danger alert-has-icon text-center alert-custom">
-        <div class="alert-icon ml-3" style="position:relative;top:-2px;display:flex;align-items:center;">
-            <i class="fas fa-exclamation-circle"></i>
-        </div>
-        <div class="text-center mr-auto ml-auto">
-            Wystąpił błąd podczas łączenia z API DIVShop.pro. Spróbuj odświeżyć stronę lub <a href="https://divshop.pro/check-url" target="_blank" rel="noopener noreferrer">sprawdź</a> czy Twój adres URL nie jest na czarnej liście
-        </div>
-    </div>
-<?php endif; ?>
-<?php if($divsAPI['divsUpdate']['status'] == true): ?>
+if($divsAPI['divsUpdate']['status'] == true): ?>
     <div class="alert alert-success alert-has-icon text-center alert-custom">
         <div class="alert-icon ml-3" style="position:relative;top:-2px;display:flex;align-items:center;">
             <i class="fas fa-check-circle"></i>

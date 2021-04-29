@@ -25,7 +25,6 @@ class Servers extends CI_Controller {
         $this->load->model('ModulesM');
         $api = new DIVShopAPI();
         $bodyD['divsAPI'] = array(
-            'divsConnection'   =>   $api->check_connection(),
             'divsVersion'      =>   $api->get_current_version(),
             'divsUpdate'       =>   $api->check_update()
         );
