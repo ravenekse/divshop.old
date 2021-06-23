@@ -1,4 +1,0 @@
-# Instalacja DIVShop.pro
-
-//todo
-
