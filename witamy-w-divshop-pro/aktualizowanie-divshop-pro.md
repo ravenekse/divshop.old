@@ -1,0 +1,4 @@
+# Aktualizowanie DIVShop.pro
+
+//todo
+
