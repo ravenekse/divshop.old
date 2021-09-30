@@ -2,26 +2,26 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php 
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+      <?php
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Aktualności</h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-md-10 col-sm-12 mr-auto ml-auto">
                 <div class="card">
@@ -34,9 +34,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <?php if(!$news): ?>
+                        <?php if (!$news) { ?>
                             <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Aktualnie nie ma żadnych aktualności do wyświetlenia!</h4>
-                        <?php else: ?>
+                        <?php } else { ?>
                             <div class="table-responsive">
                                 <table class="table text-center table-md d-md-table mb-0">
                                     <thead>
@@ -51,7 +51,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($news as $news): ?>
+                                        <?php foreach ($news as $news) { ?>
                                             <tr>
                                               <td class="pt-3">#<?php echo $news['id']; ?></td>
                                               <td class="pt-3"><?php echo $news['title']; ?></td>
@@ -67,7 +67,7 @@
                                               </td>
                                               <td class="pt-3"><?php echo($news['newsActive'] == 0) ? 'Nie' : 'Tak'; ?></td>
                                               <td class="pt-3">
-                                                <a class="btn btn-primary btn-sm" href="<?php echo $this->config->base_url('news/' . $news['id'] . '-' . getNewsUrl($news['title'])); ?>" target="_blank">
+                                                <a class="btn btn-primary btn-sm" href="<?php echo $this->config->base_url('news/'.$news['id'].'-'.getNewsUrl($news['title'])); ?>" target="_blank">
                                                   <i class="fas fa-external-link-alt"></i>
                                                 </a>
                                               </td>
@@ -86,12 +86,12 @@
                                                 <?php echo form_close(); ?>
                                               </td>
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
                             <?php echo $pagination; ?>
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

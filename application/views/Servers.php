@@ -17,19 +17,19 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="row">
-                        <?php if(!$servers): ?>
+                        <?php if (!$servers) { ?>
                             <div class="mr-auto ml-auto mt-5">
                                 <h6 class="text-center"><i class="fas fa-exclamation-triangle"></i> Aktualnie nie ma żadnych serwerów do wyświetlenia</h6>
                             </div>
-                        <?php else: ?>
-                            <?php foreach($servers as $server): ?>
+                        <?php } else { ?>
+                            <?php foreach ($servers as $server) { ?>
                                 <div class="col-md-4 mr-auto ml-auto">
                                     <div class="card">
                                         <div class="divshop-server-image" style="background: url('<?php echo $server['image']; ?>');"></div>
                                         <div class="card-body">
                                             <div class="text-center">
                                                 <h4 class="title mt-2 mb-5">Serwer <?php echo xss_clean($server['name']); ?></h4>
-                                                <?php if(isset($server['status'])): ?>
+                                                <?php if (isset($server['status'])) { ?>
                                                     <div class="divshop-server-status-container">
                                                         <span id="checking-status-box<?php echo $server['id']; ?>">
                                                             <span class="badge badge-info">
@@ -40,12 +40,12 @@
                                                             </span>
                                                         </span>
                                                         <span class="badge badge-success status-checking" id="status-box<?php echo $server['id']; ?>"><i class="fas fa-check"></i> Online</span>
-                                                        <span class="badge badge-info status-checking" id="players-box<?php echo $server['id']; ?>"><?php echo $server['status']['onlinePlayers'] . '/' . $server['status']['maxPlayers']; ?></span>
-                                                        <?php if($server['serverVersion'] == null): ?>
+                                                        <span class="badge badge-info status-checking" id="players-box<?php echo $server['id']; ?>"><?php echo $server['status']['onlinePlayers'].'/'.$server['status']['maxPlayers']; ?></span>
+                                                        <?php if ($server['serverVersion'] == null) { ?>
                                                             <span class="badge badge-info status-checking" id="version-box<?php echo $server['id']; ?>"><?php echo $server['status']['version']; ?></span>
-                                                        <?php else: ?>
+                                                        <?php } else { ?>
                                                             <span class="badge badge-info status-checking" id="version-box<?php echo $server['id']; ?>"><?php echo $server['serverVersion']; ?></span>
-                                                        <?php endif; ?>
+                                                        <?php } ?>
                                                         <div class="progress-container progress-success pt-3">
                                                             <div class="progress divshop-players-bar">
                                                                 <div class="progress-bar divshop-players-bar progress-bar-danger" id="players-progress-box<?php echo $server['id']; ?>" role="progressbar" aria-valuenow="<?php echo $server['status']['percent']; ?>" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
@@ -71,7 +71,7 @@
                                                             checkConnection();
                                                         </script>
                                                     </div>
-                                                <?php else: ?>
+                                                <?php } else { ?>
                                                     <div class="divshop-server-status-container">
                                                         <span id="checking-status-box<?php echo $server['id']; ?>">
                                                             <span class="badge badge-info">
@@ -102,14 +102,14 @@
                                                             checkConnection();
                                                         </script>
                                                     </div>
-                                                <?php endif; ?>
-                                                <a href="<?php echo $this->config->base_url('shop/' . $server['id'] . '-' . getShopUrl(xss_clean($server['name']))); ?>" class="btn btn-success btn-link btn-link-custom btn-sm">Przejdź do sklepu</a>
+                                                <?php } ?>
+                                                <a href="<?php echo $this->config->base_url('shop/'.$server['id'].'-'.getShopUrl(xss_clean($server['name']))); ?>" class="btn btn-success btn-link btn-link-custom btn-sm">Przejdź do sklepu</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                            <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

@@ -2,26 +2,26 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php 
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+      <?php
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Edycja usługi <?php echo $service['name'] . " (ID: #" . $service['id'] . ")"; ?></h1>
+            <h1>Edycja usługi <?php echo $service['name'].' (ID: #'.$service['id'].')'; ?></h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-md-10 col-sm-12 mr-auto ml-auto">
                 <div class="card">
@@ -59,13 +59,13 @@
                                               <div class="col-lg-9 col-xl-9">
                                                 <select class="form-control selectric" name="serviceServer">
                                                     <option disabled selected>Wybierz serwer</option>
-                                                    <?php foreach($servers as $server): ?>
+                                                    <?php foreach ($servers as $server) { ?>
                                                         <option value="<?php echo $server['id']; ?>" <?php echo($service['server'] == $server['id']) ? 'selected' : ''; ?>>Serwer <?php echo $server['name']; ?></option>
-                                                    <?php endforeach; ?>
+                                                    <?php } ?>
                                                 </select>
                                               </div>
                                             </div>
-                                            <?php if($settings['smsOperator'] != 0 && $settings['smsOperator'] = 1): ?>
+                                            <?php if ($settings['smsOperator'] != 0 && $settings['smsOperator'] = 1) { ?>
                                               <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">Kanał SMS <span class="text-danger" data-toggle="tooltip" title="Pole wymagane">*</span></label>
                                                 <div class="col-lg-9 col-xl-9">
@@ -83,14 +83,14 @@
                                                 <div class="col-lg-9 col-xl-9">
                                                   <select class="form-control selectric" name="serviceSmsNumber">
                                                       <option disabled selected>Wybierz numer</option>
-                                                      <?php foreach(getSmsNumber(1) as $number => $cost):
-                                                          echo '<option value="' . $number . '" ' . (($service['smsConfig']['smsNumber'] == $number) ? 'selected' : '') . '>' . $number . ' - ' . $cost . ' zł (' . getBruttoPrice($number, 1) . ' zł z VAT)</option>';
-                                                      endforeach; ?>
+                                                      <?php foreach (getSmsNumber(1) as $number => $cost) {
+          echo '<option value="'.$number.'" '.(($service['smsConfig']['smsNumber'] == $number) ? 'selected' : '').'>'.$number.' - '.$cost.' zł ('.getBruttoPrice($number, 1).' zł z VAT)</option>';
+      } ?>
                                                   </select>
                                                 </div>
                                               </div>
-                                            <?php endif; ?>
-                                            <?php $paypal = json_decode($payments['paypal']['config'], true); if($paypal['address'] != null): ?>
+                                            <?php } ?>
+                                            <?php $paypal = json_decode($payments['paypal']['config'], true); if ($paypal['address'] != null) { ?>
                                                 <div class="form-group row">
                                                     <label class="col-xl-3 col-lg-3 col-form-label">Koszt PayPal</label>
                                                     <div class="col-lg-9 col-xl-9">
@@ -98,8 +98,8 @@
                                                         <small>Jeżeli równa wartość np. 10 wpisz bez kropki i zer na końcu</small>
                                                     </div>
                                                 </div>
-                                            <?php endif; ?>
-                                            <?php $transfer = json_decode($payments['transfer']['config'], true); if(($transfer['transfer']['shopid'] && $transfer['transfer']['userid'] && $transfer['transfer']['hash']) != null): ?>
+                                            <?php } ?>
+                                            <?php $transfer = json_decode($payments['transfer']['config'], true); if (($transfer['transfer']['shopid'] && $transfer['transfer']['userid'] && $transfer['transfer']['hash']) != null) { ?>
                                                 <div class="form-group row">
                                                     <label class="col-xl-3 col-lg-3 col-form-label">Koszt Przelewu</label>
                                                     <div class="col-lg-9 col-xl-9">
@@ -107,7 +107,7 @@
                                                         <small>Jeżeli równa wartość np. 10 wpisz bez kropki i zer na końcu</small>
                                                     </div>
                                                 </div>
-                                            <?php endif; ?>
+                                            <?php } ?>
                                             <div class="form-group row">
                                               <label class="col-xl-3 col-lg-3 col-form-label">Komendy do wykonania <span class="text-danger" data-toggle="tooltip" title="Pole wymagane">*</span></label>
                                               <div class="col-lg-9 col-xl-9">

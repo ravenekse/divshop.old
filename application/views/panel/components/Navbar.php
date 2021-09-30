@@ -2,10 +2,10 @@
 /**
  * @author   DIVShop Team
  * @copyright   Copyright (c) 2021 DIVShop.pro (https://divshop.pro/)
+ *
  * @link   https://divshop.pro
-**/
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+ **/
+defined('BASEPATH') or exit('No direct script access allowed');
 $errors = 0;
 ?>
 <nav class="navbar navbar-expand-lg main-navbar">
@@ -28,7 +28,8 @@ $errors = 0;
                     Powiadomienia systemowe
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
-                    <?php if(substr(decoct(fileperms(APPPATH . 'config/database.php')), -4) != 644): $errors++ ?>
+                    <?php if (substr(decoct(fileperms(APPPATH.'config/database.php')), -4) != 644) {
+    $errors++ ?>
                         <div class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-icon bg-danger text-white">
                                 <i class="fas fa-exclamation"></i>
@@ -39,8 +40,10 @@ $errors = 0;
                                 <div class="time text-muted font-weight-bold text-uppercase">Krytyczne</div>
                             </div>
                         </div>
-                    <?php endif; ?>
-                    <?php if(substr(decoct(fileperms(APPPATH . 'config/config.php')), -4) != 644): $errors++ ?>
+                    <?php
+} ?>
+                    <?php if (substr(decoct(fileperms(APPPATH.'config/config.php')), -4) != 644) {
+        $errors++ ?>
                         <div class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-icon bg-danger text-white">
                                 <i class="fas fa-exclamation"></i>
@@ -51,8 +54,10 @@ $errors = 0;
                                 <div class="time text-muted font-weight-bold text-uppercase">Krytyczne</div>
                             </div>
                         </div>
-                    <?php endif; ?>
-                    <?php if(!extension_loaded('mbstring')): $errors++ ?>
+                    <?php
+    } ?>
+                    <?php if (!extension_loaded('mbstring')) {
+        $errors++ ?>
                         <div class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-icon bg-warning text-white">
                                 <i class="fas fa-exclamation"></i>
@@ -63,8 +68,10 @@ $errors = 0;
                                 <div class="time text-muted font-weight-bold text-uppercase">Ważne</div>
                             </div>
                         </div>
-                    <?php endif; ?>
-                    <?php if(phpversion() < 7.0 ): $errors++ ?>
+                    <?php
+    } ?>
+                    <?php if (phpversion() < 7.0) {
+        $errors++ ?>
                         <div class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-icon bg-warning text-white">
                                 <i class="fas fa-exclamation"></i>
@@ -75,8 +82,10 @@ $errors = 0;
                                 <div class="time text-muted font-weight-bold text-uppercase">Ważne</div>
                             </div>
                         </div>
-                    <?php endif; ?>
-                    <?php if($divsAPI['divsUpdate']['status']): $errors++ ?>
+                    <?php
+    } ?>
+                    <?php if ($divsAPI['divsUpdate']['status']) {
+        $errors++ ?>
                         <div class="dropdown-item dropdown-item-unread">
                             <div class="dropdown-item-icon bg-success text-white">
                                 <i class="fas fa-exclamation"></i>
@@ -87,21 +96,22 @@ $errors = 0;
                                 <div class="time text-muted font-weight-bold text-uppercase">Ważne</div>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php
+    } ?>
                 </div>
             </div>
         </li>
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="<?php echo($this->session->userdata('avatar') != null) ? $this->session->userdata('avatar') : $this->config->base_url('assets/images/default_avatar.png'); ?>" class="rounded-circle mr-1" alt="<?php echo $this->session->userdata('name') . "'s avatar"; ?>">
+                <img alt="image" src="<?php echo($this->session->userdata('avatar') != null) ? $this->session->userdata('avatar') : $this->config->base_url('assets/images/default_avatar.png'); ?>" class="rounded-circle mr-1" alt="<?php echo $this->session->userdata('name')."'s avatar"; ?>">
                 <div class="d-sm-none d-lg-inline-block">
-                    <?php if(getOnlyHour(time()) < 12): ?>
+                    <?php if (getOnlyHour(time()) < 12) { ?>
                         Dzień dobry, 
-                    <?php elseif(getOnlyHour(time()) >= 12 && getOnlyHour(time()) < 19): ?>
+                    <?php } elseif (getOnlyHour(time()) >= 12 && getOnlyHour(time()) < 19) { ?>
                         Dzień dobry, 
-                    <?php elseif(getOnlyHour(time()) >= 19): ?>
+                    <?php } elseif (getOnlyHour(time()) >= 19) { ?>
                         Dobry wieczór,
-                    <?php endif; ?>
+                    <?php } ?>
                     <?php echo $this->session->userdata('name'); ?>
                 </div>
             </a>

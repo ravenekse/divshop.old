@@ -1,21 +1,21 @@
-<?php if($this->uri->segment('2') == "servers"): ?>
-    <?php if($servers): ?>
-        <?php foreach($servers as $server): ?>
+<?php if ($this->uri->segment('2') == 'servers') { ?>
+    <?php if ($servers) { ?>
+        <?php foreach ($servers as $server) { ?>
             <div class="modal fade" tabindex="-1" role="dialog" id="divsServerImageID<?php echo $server['id']; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-whitesmoke">
-                            <h5 class="modal-title">Obrazek serwera <?php echo $server['name'] . ' (ID: #' . $server['id'] . ')'; ?></h5>
+                            <h5 class="modal-title">Obrazek serwera <?php echo $server['name'].' (ID: #'.$server['id'].')'; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
                             </button>
                         </div>
                         <div class="modal-body mr-auto ml-auto text-center">
-                            <?php if($server['image'] == null): ?>
-                                <h6>Aktualnie serwer <?php echo $server['name'] . ' (ID: #' . $server['id'] . ')'; ?> nie posiada obrazka. Możesz to zmienić edytując ten serwer</h6>
-                            <?php else: ?>
+                            <?php if ($server['image'] == null) { ?>
+                                <h6>Aktualnie serwer <?php echo $server['name'].' (ID: #'.$server['id'].')'; ?> nie posiada obrazka. Możesz to zmienić edytując ten serwer</h6>
+                            <?php } else { ?>
                                 <img class="img-fluid rounded" src="<?php echo $server['image']; ?>" alt="Obrazek serwera <?php echo $server['name'] ?>">
-                            <?php endif; ?>
+                            <?php } ?>
                         </div>
                         <div class="modal-footer bg-whitesmoke br">
                             <button type="button" class="btn btn-background-transparent text-danger text-uppercase" data-dismiss="modal">Zamknij</button>
@@ -27,7 +27,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-whitesmoke">
-                            <h5 class="modal-title">Ustawienia połączenia serwera <?php echo $server['name'] . ' (ID: #' . $server['id'] . ')'; ?></h5>
+                            <h5 class="modal-title">Ustawienia połączenia serwera <?php echo $server['name'].' (ID: #'.$server['id'].')'; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
                             </button>
@@ -92,18 +92,18 @@
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-<?php endif; ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
 
-<?php if($this->uri->segment('2') == "services"): ?>
-    <?php if($services): ?>
-        <?php foreach($services as $service): ?>
+<?php if ($this->uri->segment('2') == 'services') { ?>
+    <?php if ($services) { ?>
+        <?php foreach ($services as $service) { ?>
             <div class="modal fade" tabindex="-1" role="dialog" id="divsServiceImageDescriptionCommandsID<?php echo $service['id']; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-whitesmoke">
-                            <h5 class="modal-title">Opis usługi, obrazek i komendy <?php echo $service['name'] . ' (ID: #' . $service['id'] . ')'; ?></h5>
+                            <h5 class="modal-title">Opis usługi, obrazek i komendy <?php echo $service['name'].' (ID: #'.$service['id'].')'; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
                             </button>
@@ -119,39 +119,39 @@
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="divsServiceDescriptionID<?php echo $service['id']; ?>" role="tabpanel" aria-labelledby="divsServiceDescriptionID<?php echo $service['id']; ?>-tab">
                                     <div class="d-grid justify-content-center mt-3">
-                                        <?php if($service['description'] == null): ?>
-                                            <h6>Aktualnie usługa <?php echo $service['name'] . ' (ID: #' . $service['id'] . ')'; ?> nie posiada opisu. Możesz to zmienić edytując tą usługę</h6>
-                                        <?php else: ?>
+                                        <?php if ($service['description'] == null) { ?>
+                                            <h6>Aktualnie usługa <?php echo $service['name'].' (ID: #'.$service['id'].')'; ?> nie posiada opisu. Możesz to zmienić edytując tą usługę</h6>
+                                        <?php } else { ?>
                                             <?php echo $service['description']; ?>
-                                        <?php endif; ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="divsServiceImageID<?php echo $service['id']; ?>" role="tabpanel" aria-labelledby="divsServiceImageID<?php echo $service['id']; ?>-tab">
                                     <div class="d-grid justify-content-center mt-3">
-                                        <?php if($service['image'] == null): ?>
-                                            <h6>Aktualnie usługa <?php echo $service['name'] . ' (ID: #' . $service['id'] . ')'; ?> nie posiada obrazka. Możesz to zmienić edytując tą usługę</h6>
-                                        <?php else: ?>
+                                        <?php if ($service['image'] == null) { ?>
+                                            <h6>Aktualnie usługa <?php echo $service['name'].' (ID: #'.$service['id'].')'; ?> nie posiada obrazka. Możesz to zmienić edytując tą usługę</h6>
+                                        <?php } else { ?>
                                             <img src="<?php echo $service['image']; ?>" alt="<?php echo $service['image']; ?>" class="img-fluid rounded">
-                                        <?php endif; ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="divsServiceCommandsID<?php echo $service['id']; ?>" role="tabpanel" aria-labelledby="divsServiceCommandsID<?php echo $service['id']; ?>-tab">
                                     <div class="d-grid justify-content-center mt-3">
-                                        <?php if($service['commands'] == null): ?>
-                                            <h6>Aktualnie usługa <?php echo $service['name'] . ' (ID: #' . $service['id'] . ')'; ?> nie posiada komend. Możesz to zmienić edytując tą usługę</h6>
-                                        <?php else: ?>
+                                        <?php if ($service['commands'] == null) { ?>
+                                            <h6>Aktualnie usługa <?php echo $service['name'].' (ID: #'.$service['id'].')'; ?> nie posiada komend. Możesz to zmienić edytując tą usługę</h6>
+                                        <?php } else { ?>
                                             <pre>
                                                 <table class="table">
                                                     <tbody>
-                                                        <?php foreach($service['commands'] as $command): ?>
+                                                        <?php foreach ($service['commands'] as $command) { ?>
                                                             <tr class="service-command">
                                                                 <td><?php echo $command; ?></td>
                                                             </tr>
-                                                        <?php endforeach; ?>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                             </pre>
-                                        <?php endif; ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-whitesmoke">
-                            <h5 class="modal-title">Ustawienia płatności usługi <?php echo $service['name'] . ' (ID: #' . $service['id'] . ')'; ?></h5>
+                            <h5 class="modal-title">Ustawienia płatności usługi <?php echo $service['name'].' (ID: #'.$service['id'].')'; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
                             </button>
@@ -208,7 +208,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <?php if($service['paypalCost'] != null): ?>
+                                <?php if ($service['paypalCost'] != null) { ?>
                                     <div class="tab-pane fade" id="divsServicePaymentSettingsPayPal<?php echo $service['id']; ?>" role="tabpanel" aria-labelledby="divsServicePaymentSettingsPayPal<?php echo $service['id']; ?>-tab">
                                         <div class="table-reponsive">
                                             <table class="table text-center table-md d-md-table mb-0">
@@ -221,8 +221,8 @@
                                             </table>
                                         </div>
                                     </div>
-                                <?php endif; ?>
-                                <?php if($service['transferCost'] != null): ?>
+                                <?php } ?>
+                                <?php if ($service['transferCost'] != null) { ?>
                                     <div class="tab-pane fade" id="divsServicePaymentSettingsTransfer<?php echo $service['id']; ?>" role="tabpanel" aria-labelledby="divsServicePaymentSettingsTransfer<?php echo $service['id']; ?>-tab">
                                         <div class="table-reponsive">
                                             <table class="table text-center table-md d-md-table mb-0">
@@ -235,7 +235,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                <?php endif; ?>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="modal-footer bg-whitesmoke br">
@@ -244,29 +244,29 @@
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-<?php endif; ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
 
-<?php if($this->uri->segment('2') == "news"): ?>
-    <?php if($news): ?>
-        <?php foreach($news as $news): ?>
+<?php if ($this->uri->segment('2') == 'news') { ?>
+    <?php if ($news) { ?>
+        <?php foreach ($news as $news) { ?>
             <div class="modal fade" tabindex="-1" role="dialog" id="divsNewsImageID<?php echo $news['id']; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-whitesmoke">
-                            <h5 class="modal-title">Obrazek newsa <?php echo $news['title'] . ' (ID: #' . $news['id'] . ')'; ?></h5>
+                            <h5 class="modal-title">Obrazek newsa <?php echo $news['title'].' (ID: #'.$news['id'].')'; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
                             </button>
                         </div>
                         <div class="modal-body text-center">
                             <div class="d-grid justify-content-center mt-3">
-                                <?php if($news['image'] == null): ?>
-                                    <h6>Aktualnie news <?php echo $news['name'] . ' (ID: #' . $news['id'] . ')'; ?> nie posiada obrazka. Możesz to zmienić edytując tego newsa</h6>
-                                <?php else: ?>
+                                <?php if ($news['image'] == null) { ?>
+                                    <h6>Aktualnie news <?php echo $news['name'].' (ID: #'.$news['id'].')'; ?> nie posiada obrazka. Możesz to zmienić edytując tego newsa</h6>
+                                <?php } else { ?>
                                     <img src="<?php echo $news['image']; ?>" alt="<?php echo $news['image']; ?>" class="img-fluid rounded">
-                                <?php endif; ?>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="modal-footer bg-whitesmoke br">
@@ -279,7 +279,7 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-whitesmoke">
-                            <h5 class="modal-title">Treść newsa <?php echo $news['title'] . ' (ID: #' . $news['id'] . ')'; ?></h5>
+                            <h5 class="modal-title">Treść newsa <?php echo $news['title'].' (ID: #'.$news['id'].')'; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
                             </button>
@@ -295,18 +295,18 @@
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-<?php endif; ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
 
-<?php if($this->uri->segment('2') == "pages"): ?>
-    <?php if($pages): ?>
-        <?php foreach($pages as $page): ?>
+<?php if ($this->uri->segment('2') == 'pages') { ?>
+    <?php if ($pages) { ?>
+        <?php foreach ($pages as $page) { ?>
             <div class="modal fade" tabindex="-1" role="dialog" id="divsPageContentID<?php echo $page['id']; ?>" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header bg-whitesmoke">
-                            <h5 class="modal-title">Treść strony <?php echo $page['title'] . ' (ID: #' . $page['id'] . ')'; ?></h5>
+                            <h5 class="modal-title">Treść strony <?php echo $page['title'].' (ID: #'.$page['id'].')'; ?></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="bi bi-x"></i></span>
                             </button>
@@ -322,11 +322,11 @@
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-<?php endif; ?>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>
 
-<?php if(isset($_SESSION['divsUpdateAvailable'])): ?>
+<?php if (isset($_SESSION['divsUpdateAvailable'])) { ?>
         <div class="modal fade" tabindex="-1" role="dialog" id="divsUpdateAvailable" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -348,4 +348,4 @@
                 </div>
             </div>
         </div>
-<?php endif; ?>
+<?php } ?>

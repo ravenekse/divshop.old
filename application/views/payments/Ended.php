@@ -17,8 +17,8 @@
             <div class="row">
                 <div class="col-md-12 col-lg-12">
                     <div class="col-md-6 mr-auto ml-auto text-center">
-                        <?php if($_SESSION['purchaseResponse']['method'] == "sms"): ?>
-                            <?php if($_SESSION['purchaseResponse']['status'] == true): ?>
+                        <?php if ($_SESSION['purchaseResponse']['method'] == 'sms') { ?>
+                            <?php if ($_SESSION['purchaseResponse']['status'] == true) { ?>
                                 <i class="far fa-check-circle text-success fa-6x mt-3"></i>
                                 <h3 class="title">Płatność zrealizowana</h3>
                                 <p>
@@ -27,7 +27,7 @@
                                     ID Płatności: <b><?php echo $_SESSION['purchaseResponse']['payid']; ?></b>
                                 </p>
                                 <a href="<?php echo $this->config->base_url(); ?>" class="btn btn-divshop btn-sm">Powrót do strony głownej</a>
-                            <?php else: ?>
+                            <?php } else { ?>
                                 <i class="far fa-times-circle text-danger fa-6x mt-3"></i>
                                 <h3 class="title">Płatność nieudana</h3>
                                 <p>
@@ -38,8 +38,8 @@
                                     ID Płatności: <b><?php echo $_SESSION['purchaseResponse']['payid']; ?></b>
                                 </p>
                                 <a href="<?php echo $this->config->base_url(); ?>" class="btn btn-divshop btn-sm">Powrót do strony głownej</a>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                            <?php } ?>
+                        <?php } ?>
                         <?php unset($_SESSION['purchaseResponse']); ?>
                     </div>
                 </div>

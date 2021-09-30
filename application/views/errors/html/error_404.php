@@ -2,10 +2,10 @@
 /**
  * @author   DIVShop Team
  * @copyright   Copyright (c) 2021 DIVShop.pro (https://divshop.pro/)
+ *
  * @link   https://divshop.pro
-**/
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+ **/
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 
 <!DOCTYPE html>

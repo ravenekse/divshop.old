@@ -20,6 +20,7 @@ class PaypalIPN
     /**
      * Sets the IPN verification to sandbox mode (for use when testing,
      * should not be enabled in production).
+     *
      * @return void
      */
     public function useSandbox()
@@ -30,6 +31,7 @@ class PaypalIPN
     /**
      * Sets curl to use php curl's built in certs (may be required in some
      * environments).
+     *
      * @return void
      */
     public function usePHPCerts()
@@ -55,18 +57,19 @@ class PaypalIPN
      * Verification Function
      * Sends the incoming post data back to PayPal using the cURL library.
      *
-     * @return bool
      * @throws Exception
+     *
+     * @return bool
      */
     public function verifyIPN()
     {
-        if ( ! count($_POST)) {
-            throw new Exception("Missing POST Data");
+        if (!count($_POST)) {
+            throw new Exception('Missing POST Data');
         }
 
         $raw_post_data = file_get_contents('php://input');
         $raw_post_array = explode('&', $raw_post_data);
-        $myPost = array();
+        $myPost = [];
         foreach ($raw_post_array as $keyval) {
             $keyval = explode('=', $keyval);
             if (count($keyval) == 2) {
@@ -99,19 +102,20 @@ class PaypalIPN
 
         // This is often required if the server is missing a global cert bundle, or is using an outdated one.
         if ($this->use_local_certs) {
-            curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . "/cert/cacert.pem");
+            curl_setopt($ch, CURLOPT_CAINFO, __DIR__.'/cert/cacert.pem');
         }
         curl_setopt($ch, CURLOPT_FORBID_REUSE, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'User-Agent: PHP-IPN-Verification-Script',
             'Connection: Close',
-        ));
+        ]);
         $res = curl_exec($ch);
-        if ( ! ($res)) {
+        if (!($res)) {
             $errno = curl_errno($ch);
             $errstr = curl_error($ch);
             curl_close($ch);
+
             throw new Exception("cURL error: [$errno] $errstr");
         }
 

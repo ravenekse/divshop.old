@@ -2,10 +2,10 @@
 /**
  * @author   DIVShop Team
  * @copyright   Copyright (c) 2021 DIVShop.pro (https://divshop.pro/)
+ *
  * @link   https://divshop.pro
-**/
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+ **/
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |   FALSE - No SSL requirement
 |
 */
-$config['force_ssl'] = FALSE;
+$config['force_ssl'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +31,4 @@ $config['force_ssl'] = FALSE;
 |   FALSE - No sandbox using
 |
 */
-$config['paypal_sandbox'] = FALSE;
+$config['paypal_sandbox'] = false;

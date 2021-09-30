@@ -1,13 +1,13 @@
 <body>
     <?php $this->load->view('components/Navbar'); ?>
     <div class="page-header header-filter header-small divshop-bg-header" data-parallax="true"
-        <?php if($news['image'] != null): 
-                echo 'style="background-image: url(' . $news['image'] . ') !important;"';
-            elseif($news['image'] == null && $settings['pageBackground'] != null):
-                echo 'style="background-image: url(' . $settings['pageBackground'] .') !important;"';
-            elseif($news['image'] == null && $settings['pageBackground'] == null):
-                echo 'style="background-image: url(https://cdn-n.divshop.pro/images/header.png) !important;"';
-            endif;?>>
+        <?php if ($news['image'] != null) {
+    echo 'style="background-image: url('.$news['image'].') !important;"';
+} elseif ($news['image'] == null && $settings['pageBackground'] != null) {
+    echo 'style="background-image: url('.$settings['pageBackground'].') !important;"';
+} elseif ($news['image'] == null && $settings['pageBackground'] == null) {
+    echo 'style="background-image: url(https://cdn-n.divshop.pro/images/header.png) !important;"';
+}?>>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">

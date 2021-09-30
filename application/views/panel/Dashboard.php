@@ -2,26 +2,26 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php 
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+      <?php
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Dashboard</h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
@@ -111,16 +111,16 @@
                   <canvas id="divshopPurchasesStatistics" height="132"></canvas>
                   <div class="statistic-details">
                     <div class="statistic-details-item">
-                      <?php if($percentTransactions == 0): ?>
+                      <?php if ($percentTransactions == 0) { ?>
                         <span class="text-muted"><span class="text-muted"><i class="fas fa-caret-up"></i><i class="fas fa-caret-down"></i></span> 0%</span>
                         <div class="detail-name">Tyle samo transakcji co wczoraj</div>
-                      <?php elseif($percentTransactions < 0): ?>
-                        <span class="text-muted"><span class="text-danger"><i class="fas fa-caret-down"></i></span> <?php echo str_replace("-", "", $percentTransactions); ?>%</span>
+                      <?php } elseif ($percentTransactions < 0) { ?>
+                        <span class="text-muted"><span class="text-danger"><i class="fas fa-caret-down"></i></span> <?php echo str_replace('-', '', $percentTransactions); ?>%</span>
                         <div class="detail-name">Dzisiejsze transakcje (mniej niż wczoraj)</div>
-                      <?php elseif($percentTransactions > 0): ?>
-                        <span class="text-muted"><span class="text-success"><i class="fas fa-caret-up"></i></span> <?php echo str_replace("-", "", $percentTransactions); ?>%</span>
+                      <?php } elseif ($percentTransactions > 0) { ?>
+                        <span class="text-muted"><span class="text-success"><i class="fas fa-caret-up"></i></span> <?php echo str_replace('-', '', $percentTransactions); ?>%</span>
                         <div class="detail-name">Dzisiejsze transakcje (więcej niż wczoraj)</div>
-                      <?php endif; ?>
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
@@ -132,9 +132,9 @@
                       <h4><i class="bi bi-hdd-rack"></i> Statusy serwerów</h4>
                   </div>
                   <div class="card-body">
-                      <?php if(!$servers): ?>
+                      <?php if (!$servers) { ?>
                         <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Aktualnie nie ma żadnych serwerów do wyświetlenia!</h4>
-                      <?php else: ?>
+                      <?php } else { ?>
                         <div class="table-responsive">
                           <table class="table text-center table-md d-md-table mb-0">
                             <thead>
@@ -148,26 +148,30 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <?php foreach($servers as $server): ?>
+                              <?php foreach ($servers as $server) { ?>
                                 <tr>
                                   <td>#<?php echo $server['id']; ?></td>
                                   <td><?php echo $server['name']; ?></td>
-                                  <td><?php echo $server['ip'] . ':' . $server['port']; ?></td>
-                                  <?php if(isset($server['status'])): ?>
+                                  <td><?php echo $server['ip'].':'.$server['port']; ?></td>
+                                  <?php if (isset($server['status'])) { ?>
                                     <td><span class="badge badge-success badge-server"><i class="bi bi-check2"></i> Online</span></td>
-                                    <td><span class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php if($server['serverVersion'] == null): echo $server['status']['version']; else: echo $server['serverVersion'] . ' (Własne)'; endif; ?>"><i class="fas fa-eye"></i></span></td>
-                                    <td class="pt-3" style="position:relative;top:-1px;"><?php echo $server['status']['onlinePlayers'] . '/' . $server['status']['maxPlayers']; ?></td>
-                                  <?php else: ?>
+                                    <td><span class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php if ($server['serverVersion'] == null) {
+          echo $server['status']['version'];
+      } else {
+          echo $server['serverVersion'].' (Własne)';
+      } ?>"><i class="fas fa-eye"></i></span></td>
+                                    <td class="pt-3" style="position:relative;top:-1px;"><?php echo $server['status']['onlinePlayers'].'/'.$server['status']['maxPlayers']; ?></td>
+                                  <?php } else { ?>
                                     <td><span class="badge badge-danger badge-server"><i class="bi bi-x"></i> Offline</span></td>
                                     <td data-toggle="tooltip" title="Not available">n/a</td>
                                     <td data-toggle="tooltip" title="Not available">n/a</td>
-                                  <?php endif; ?>
+                                  <?php } ?>
                                 </tr>
-                              <?php endforeach; ?>
+                              <?php } ?>
                             </tbody>
                           </table>
                         </div>
-                      <?php endif; ?>
+                      <?php } ?>
                   </div>
               </div>
               <div class="card">
@@ -175,9 +179,9 @@
                   <h4><i class="bi bi-basket-fill" style="top:-3px;"></i> Ostatnie 5 zakupów</h4>
                 </div>
                 <div class="card-body">
-                  <?php if(!$lastPurchases): ?>
+                  <?php if (!$lastPurchases) { ?>
                     <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Aktualnie nie ma żadnych zakupów do wyświetlenia!</h4>
-                  <?php else: ?>
+                  <?php } else { ?>
                     <div class="table-responsive">
                       <table class="table text-center table-md d-md-table mb-0">
                         <thead>
@@ -192,40 +196,40 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <?php foreach($lastPurchases as $lastPurchase): ?>
+                          <?php foreach ($lastPurchases as $lastPurchase) { ?>
                             <tr>
                               <td class="pt-3">#<?php echo $lastPurchase['id']; ?></td>
                               <td>
                                 <div class="avatar avatar-custom-size avatar-not-circle" data-toggle="tooltip" title="<?php echo xss_clean($lastPurchase['buyerName']); ?>">
-                                  <img src="<?php echo 'https://mc-heads.net/avatar/' . xss_clean($lastPurchase['buyerName']) . '/50'; ?>" alt="<?php echo xss_clean($lastPurchase['buyerName']); ?>">
+                                  <img src="<?php echo 'https://mc-heads.net/avatar/'.xss_clean($lastPurchase['buyerName']).'/50'; ?>" alt="<?php echo xss_clean($lastPurchase['buyerName']); ?>">
                                 </div>
                               </td>
                               <td class="pt-3"><?php echo $lastPurchase['server']; ?></td>
                               <td class="pt-3"><?php echo $lastPurchase['service']; ?></td>
                               <td class="pt-3">
-                                <?php switch($lastPurchase['method']):
-                                  case "SMS Premium":
+                                <?php switch ($lastPurchase['method']) {
+                                  case 'SMS Premium':
                                     echo '<span class="badge badge-warning badge-sm">SMS</span>';
                                     break;
-                                  case "PayPal":
+                                  case 'PayPal':
                                     echo '<span class="badge badge-info badge-sm">PayPal</span>';
                                     break;
-                                  case "Przelew":
+                                  case 'Przelew':
                                     echo '<span class="badge badge-danger badge-sm">Przelew</span>';
                                     break;
-                                  case "Voucher":
+                                  case 'Voucher':
                                     echo '<span class="badge badge-dark badge-sm">Voucher</span>';
                                     break;
-                                endswitch; ?>
+                                } ?>
                               </td>
-                              <td class="pt-3"><?php echo($lastPurchase['method'] == "Voucher") ? '0,00' : number_format($lastPurchase['profit'], 2, ',', ' '); ?> zł</td>
+                              <td class="pt-3"><?php echo($lastPurchase['method'] == 'Voucher') ? '0,00' : number_format($lastPurchase['profit'], 2, ',', ' '); ?> zł</td>
                               <td class="pt-3"><?php echo formatDate($lastPurchase['date']); ?></td>
                             </tr>
-                          <?php endforeach; ?>
+                          <?php } ?>
                         </tbody>
                       </table>
                     </div>
-                  <?php endif; ?>
+                  <?php } ?>
                 </div>
               </div>
             </div>
@@ -236,10 +240,10 @@
                 </div>
                 <div class="card-body">
                   <div class="failedlogins-card-scroll">
-                    <?php if(!$failedLogins): ?>
+                    <?php if (!$failedLogins) { ?>
                       <h4 class="divshop-no-data"><i class="bi bi-emoji-smile"></i> Aktualnie nie ma nieudanych prób logowania!</h4>
-                    <?php else: ?>
-                      <?php foreach($failedLogins as $failedLogin): ?>
+                    <?php } else { ?>
+                      <?php foreach ($failedLogins as $failedLogin) { ?>
                         <div class="failedlogin-item mt-2">
                           <div class="failedlogin-avatar avatar avatar-custom-size">
                             <img src="<?php echo $this->config->base_url('assets/images/default_avatar.png'); ?>" alt="Failed Login">
@@ -249,14 +253,14 @@
                             <div class="failedlogin-date"><?php echo formatDate($failedLogin['time']); ?></div>
                           </div>
                         </div>
-                      <?php endforeach; ?>
-                    <?php endif; ?>
+                      <?php } ?>
+                    <?php } ?>
                   </div>
-                  <?php if($failedLogins): ?>
+                  <?php if ($failedLogins) { ?>
                     <small class="d-flex justify-content-center mt-3">
                       <a href="<?php echo $this->config->base_url('panel/failedlogins'); ?>">Wszystkie nieudane próby logowania</a>
                     </small>
-                  <?php endif; ?>
+                  <?php } ?>
                 </div>
               </div>
               <div class="card">

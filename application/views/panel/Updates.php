@@ -4,31 +4,31 @@
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
       <?php
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Aktualizacje</h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-md-10 col-sm-12 mr-auto ml-auto">
                 <div class="card">
                     <div class="card-body" id="update-app">
-                        <?php if($divsAPI['divsConnection']['status'] == true): ?>
-                            <?php if($divsAPI['divsUpdate']['status'] == true): ?>
+                        <?php if ($divsAPI['divsConnection']['status'] == true) { ?>
+                            <?php if ($divsAPI['divsUpdate']['status'] == true) { ?>
                                 <div class="alert alert-warning alert-has-icon text-center alert-custom">
                                     <div class="alert-icon ml-3" style="position:relative;top:-2px;display:flex;align-items:center;">
                                         <i class="fas fa-exclamation-circle"></i>
@@ -44,12 +44,12 @@
                                         <?php echo $divsAPI['divsUpdate']['changelog']; ?>
                                     </div>
                                 </div>
-                                <?php if($updateInfo['show_loader']): ?>
+                                <?php if ($updateInfo['show_loader']) { ?>
                                     <div class="col-md-6 mr-auto ml-auto mt-3 mb-3">
                                     <progress id="prog" value="0" max="100" class="progress" role="progressbar" style="margin-bottom: 10px; width: 100%"></progress>
                                     </div>
-                                    <?php $updateInfo['api']->download_update($updateInfo['update_id'], $updateInfo['has_sql'], $updateInfo['version'], null, null, array('db_host' => $this->db->hostname, 'db_user' => $this->db->username, 'db_pass' => $this->db->password, 'db_name' => $this->db->database));?>
-                                <?php else: ?>
+                                    <?php $updateInfo['api']->download_update($updateInfo['update_id'], $updateInfo['has_sql'], $updateInfo['version'], null, null, ['db_host' => $this->db->hostname, 'db_user' => $this->db->username, 'db_pass' => $this->db->password, 'db_name' => $this->db->database]); ?>
+                                <?php } else { ?>
                                     <?php echo form_open(base_url('panel/updates')); ?>
                                         <input type="hidden" name="update_id" class="form-control" value="<?php echo $divsAPI['divsUpdate']['update_id']; ?>">
                                         <input type="hidden" name="has_sql" class="form-control" value="<?php echo $divsAPI['divsUpdate']['has_sql']; ?>">
@@ -61,21 +61,21 @@
                                           Aktualna wersja: <?php echo $updateInfo['api']->get_current_version(); ?>
                                         </div>
                                     <?php echo form_close(); ?>
-                                <?php endif; ?>
-                            <?php else: ?>
+                                <?php } ?>
+                            <?php } else { ?>
                                 <h4 class="divshop-no-data">Aktualnie nie ma żadnych dostępnych aktualizacji</h4>
                                 <div class="d-flex justify-content-center mt-4">
                                     <button class="btn btn-warning" onclick="location.reload()"><i class="fas fa-sync-alt"></i> Sprawdź dostępność aktualizacji</button>
                                 </div>
-                            <?php endif; ?>
-                        <?php else: ?>
+                            <?php } ?>
+                        <?php } else { ?>
                             <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Wystąpił błąd podczas łączenia z API. Spróbuj odświeżyć stronę lub spróbuj użyć aktualizatora za kilka minut.</h4>
                             <p class="text-center text-muted">Problem się powtarza?</p>
                             <div class="d-flex justify-content-center">
                                 <a target="_blank" href="https://status.divshop.pro/" class="btn btn-dark mr-3">Statusy usług</a>
                                 <a target="_blank" href="https://divshop.pro/check-url/" class="btn btn-dark ml-3">Sprawdź URL</a>
                             </div>
-                        <?php endif; ?>
+                        <?php } ?>
                         <p class="text-center mt-5">Copyright &copy; <?php echo date('Y'); ?> by <a href="https://divshop.pro/" target="_blank" rel="noopener noreferrer">DIVShop.pro</a></p>
                     </div>
                 </div>

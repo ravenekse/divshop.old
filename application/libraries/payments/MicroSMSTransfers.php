@@ -4,14 +4,14 @@
     {
         private $url = 'https://microsms.pl/api/bankTransfer/';
         private $ips = 'https://microsms.pl/psc/ips/';
-        private $fields = array();
-       
-        function add($field, $value)
+        private $fields = [];
+
+        public function add($field, $value)
         {
             $this->fields[$field] = $value;
         }
-       
-        function submit()
+
+        public function submit()
         {
             echo '<html xmlns="http://www.w3.org/1999/xhtml">
                     <head>
@@ -25,13 +25,13 @@
                     </head>
                             <body onload="submitform();">
                     <h3>Przekierowanie do platnosci ...</h3>
-                    <form id=\'send\' action="' . $this->url . '" method="get"  >
+                    <form id=\'send\' action="'.$this->url.'" method="get"  >
                     ';
-           
+
             foreach ($this->fields as $name => $value) {
                 echo "<input type=\"hidden\" name=\"$name\" value=\"$value\">";
             }
-           
+
             echo '<input type="hidden" name="charset" value="utf-8" />
                         <input type="submit" value="Kliknij tutaj, jezeli nie zostaniesz przeniesiony w ciągu 10 sekund" />
                     </form>
@@ -39,18 +39,18 @@
                     </html>';
             exit();
         }
-       
+
         public function validate_ipn()
         {
-            if (!in_array($_SERVER['REMOTE_ADDR'], explode(',', file_get_contents($this->ips))) == TRUE) {
+            if (!in_array($_SERVER['REMOTE_ADDR'], explode(',', file_get_contents($this->ips))) == true) {
                 exit('Access denid.');
             }
         }
 
         public function validate_user($config, $post)
         {
-            if ($config['transfers']['userid'] != $post['userid']) 
+            if ($config['transfers']['userid'] != $post['userid']) {
                 exit('Bad user');
-            
+            }
         }
     }

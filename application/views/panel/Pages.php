@@ -2,26 +2,26 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php 
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+      <?php
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Własne strony</h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-md-10 col-sm-12 mr-auto ml-auto">
                 <div class="card">
@@ -34,9 +34,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <?php if(!$pages): ?>
+                        <?php if (!$pages) { ?>
                             <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Aktualnie nie ma żadnych stron do wyświetlenia!</h4>
-                        <?php else: ?>
+                        <?php } else { ?>
                             <div class="table-responsive">
                                 <table class="table text-center table-md d-md-table mb-0">
                                     <thead>
@@ -51,17 +51,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($pages as $page): ?>
+                                        <?php foreach ($pages as $page) { ?>
                                             <tr>
                                                 <td class="pt-3">#<?php echo $page['id']; ?></td>
                                                 <td class="pt-3"><?php echo $page['title']; ?></td>
-                                                <td class="pt-2" style="font-size:22px;"><?php echo($page['icon'] != null) ? '<i class="' . $page['icon'] . '"></i>' : 'Brak ikony'; ?></td>
+                                                <td class="pt-2" style="font-size:22px;"><?php echo($page['icon'] != null) ? '<i class="'.$page['icon'].'"></i>' : 'Brak ikony'; ?></td>
                                                 <td class="pt-3">
-                                                  <?php if($page['link'] != null): ?>
+                                                  <?php if ($page['link'] != null) { ?>
                                                     <a href="<?php echo $page['link']; ?>" target="_blank"><?php echo $page['title']; ?></a>
-                                                  <?php else: ?>
-                                                    <a href="<?php echo $this->config->base_url('page/' . getPageUrl($page['title'])); ?>" target="_blank"><?php echo $page['title']; ?></a>
-                                                  <?php endif; ?>
+                                                  <?php } else { ?>
+                                                    <a href="<?php echo $this->config->base_url('page/'.getPageUrl($page['title'])); ?>" target="_blank"><?php echo $page['title']; ?></a>
+                                                  <?php } ?>
                                                 </td>
                                                 <td class="pt-3">
                                                   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#divsPageContentID<?php echo $page['id']; ?>">
@@ -84,12 +84,12 @@
                                                   <?php echo form_close(); ?>
                                                 </td>
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
                             <?php echo $pagination; ?>
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

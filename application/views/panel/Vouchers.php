@@ -2,47 +2,47 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php 
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+      <?php
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Vouchery</h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-md-10 col-sm-12 mr-auto ml-auto">
                 <div class="card">
                     <div class="card-header justify-content-center d-md-block d-lg-flex text-center">
                         <h4><i class="bi bi-tags"></i> Lista voucherów</h4>
                         <div class="ml-md-auto">
-                            <?php if(!$services): ?>
+                            <?php if (!$services) { ?>
                                 <a href="#" class="btn btn-success btn-sm btn-icon icon-left" disabled data-toggle="tooltip" title="Aktualnie dodawanie voucherów jest zablokowane, ponieważ nie ma żadnej usługi!">
                                     <i class="bi bi-plus-circle"></i> Dodaj voucher
                                 </a>
-                            <?php else: ?>
+                            <?php } else { ?>
                                 <a href="<?php echo $this->config->base_url('panel/add/voucher'); ?>" class="btn btn-success btn-sm btn-icon icon-left">
                                     <i class="bi bi-plus-circle"></i> Dodaj voucher
                                 </a>
-                            <?php endif; ?>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="card-body">
-                        <?php if(!$vouchers): ?>
+                        <?php if (!$vouchers) { ?>
                             <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Aktualnie nie ma żadnych voucherów do wyświetlenia!</h4>
-                        <?php else: ?>
+                        <?php } else { ?>
                             <div class="table-responsive">
                                 <table class="table text-center table-md d-md-table mb-0">
                                     <thead>
@@ -56,7 +56,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($vouchers as $voucher): ?>
+                                        <?php foreach ($vouchers as $voucher) { ?>
                                             <tr>
                                                 <td class="pt-3">#<?php echo $voucher['id']; ?></td>
                                                 <td class="pt-3"><?php echo $voucher['server']; ?></td>
@@ -72,12 +72,12 @@
                                                     <?php echo form_close(); ?>
                                                 </td>
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
                             <?php echo $pagination; ?>
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

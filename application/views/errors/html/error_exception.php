@@ -2,10 +2,10 @@
 /**
  * @author   DIVShop Team
  * @copyright   Copyright (c) 2021 DIVShop.pro (https://divshop.pro/)
+ *
  * @link   https://divshop.pro
-**/
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+ **/
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="error-box">
             <h1 class="error-title"><i class="fa fa-exclamation-triangle"></i>&nbsp;Oops, napotkaliśmy nieoczekiwany błąd</h1>
 			<h4 class="error-subtitle">Wystąpił problem podczas interpretowania kodu sklepu 😔</h4>
-			<?php if(defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE === TRUE): ?>
+			<?php if (defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE === true) { ?>
 				<a class="error-show-backtrace" onclick="showBacktrace();">Pokaż szczegóły</a>
 				<div class="error-backtrace-box" id="error-backtrace-box">
 					<h4 class="error-name">An uncaught Exception was encountered</h4>
@@ -35,18 +35,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<p><strong>Filename:</strong> <?php echo $exception->getFile(); ?></p>
 					<p><strong>Line Number:</strong> <?php echo $exception->getLine(); ?></p>
 					<p class="error-backtrace"><strong>Backtrace:</strong></p>
-					<?php foreach(debug_backtrace() as $error): ?>
-						<?php if(isset($error['file']) && strpos($error['file'], realpath(BASEPATH)) !== 0): ?>
+					<?php foreach (debug_backtrace() as $error) { ?>
+						<?php if (isset($error['file']) && strpos($error['file'], realpath(BASEPATH)) !== 0) { ?>
 							<p style="margin-left:10px">
 								<strong>File:</strong> <?php echo $error['file'] ?><br />
 								<strong>Line:</strong> <?php echo $error['line'] ?><br />
 								<strong>Function:</strong> <?php echo $error['function'] ?>
 							</p>
-						<?php endif; ?>
-					<?php endforeach; ?>
+						<?php } ?>
+					<?php } ?>
 					<p class="error-code">ERROR CODE: DIVSHOP_PHP_EXCEPTION_ERROR</p>
 				</div>
-			<?php endif ?>
+			<?php } ?>
         </div>
 	</div>
 	<script type="text/javascript">

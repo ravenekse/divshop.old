@@ -15,9 +15,9 @@
 </head>
 <body>
     <?php
-        $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-        $base_url .= "://" . $_SERVER['HTTP_HOST'];
-        $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
+        $base_url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http');
+        $base_url .= '://'.$_SERVER['HTTP_HOST'];
+        $base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
         $base_url = str_replace('install/', '', $base_url);
     ?>
     <div class="install-wrapper">
@@ -40,7 +40,7 @@
                     <div class="step-footer">
                         <a class="btn mr docs-link" href="https://divshop.pro/docs/"><i class="fa fa-book"></i>&nbsp;Dokumentacja</a>
                         <a class="btn ml" href="<?php echo $base_url; ?>"><i class="fa fa-desktop"></i>&nbsp;Strona główna</a>
-                        <a class="btn ml" style="margin-left:0;" href="<?php echo $base_url . "admin"; ?>"><i class="fa fa-key"></i>&nbsp;Panel ACP</a>
+                        <a class="btn ml" style="margin-left:0;" href="<?php echo $base_url.'admin'; ?>"><i class="fa fa-key"></i>&nbsp;Panel ACP</a>
                     </div>
                 </div>
             </div>

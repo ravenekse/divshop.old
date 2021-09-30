@@ -4,242 +4,220 @@ namespace xPaw;
 
 class MinecraftPing
 {
-	/*
-	 * Queries Minecraft server
-	 * Returns array on success, false on failure.
-	 *
-	 * WARNING: This method was added in snapshot 13w41a (Minecraft 1.7)
-	 *
-	 * Written by xPaw
-	 *
-	 * Website: http://xpaw.me
-	 * GitHub: https://github.com/xPaw/PHP-Minecraft-Query
-	 *
-	 * ---------
-	 *
-	 * This method can be used to get server-icon.png too.
-	 * Something like this:
-	 *
-	 * $Server = new MinecraftPing( 'localhost' );
-	 * $Info = $Server->Query();
-	 * echo '<img width="64" height="64" src="' . Str_Replace( "\n", "", $Info[ 'favicon' ] ) . '">';
-	 *
-	 */
+    /*
+     * Queries Minecraft server
+     * Returns array on success, false on failure.
+     *
+     * WARNING: This method was added in snapshot 13w41a (Minecraft 1.7)
+     *
+     * Written by xPaw
+     *
+     * Website: http://xpaw.me
+     * GitHub: https://github.com/xPaw/PHP-Minecraft-Query
+     *
+     * ---------
+     *
+     * This method can be used to get server-icon.png too.
+     * Something like this:
+     *
+     * $Server = new MinecraftPing( 'localhost' );
+     * $Info = $Server->Query();
+     * echo '<img width="64" height="64" src="' . Str_Replace( "\n", "", $Info[ 'favicon' ] ) . '">';
+     *
+     */
 
-	private $Socket;
-	private $ServerAddress;
-	private $ServerPort;
-	private $Timeout;
+    private $Socket;
+    private $ServerAddress;
+    private $ServerPort;
+    private $Timeout;
 
-	public function __construct( $Address, $Port = 25565, $Timeout = 1, $ResolveSRV = true )
-	{
-		$this->ServerAddress = $Address;
-		$this->ServerPort = (int)$Port;
-		$this->Timeout = (int)$Timeout;
+    public function __construct($Address, $Port = 25565, $Timeout = 1, $ResolveSRV = true)
+    {
+        $this->ServerAddress = $Address;
+        $this->ServerPort = (int) $Port;
+        $this->Timeout = (int) $Timeout;
 
-		if( $ResolveSRV )
-		{
-			$this->ResolveSRV();
-		}
+        if ($ResolveSRV) {
+            $this->ResolveSRV();
+        }
 
-		$this->Connect( );
-	}
+        $this->Connect();
+    }
 
-	public function __destruct( )
-	{
-		$this->Close( );
-	}
+    public function __destruct()
+    {
+        $this->Close();
+    }
 
-	public function Close( )
-	{
-		if( $this->Socket !== null )
-		{
-			fclose( $this->Socket );
+    public function Close()
+    {
+        if ($this->Socket !== null) {
+            fclose($this->Socket);
 
-			$this->Socket = null;
-		}
-	}
+            $this->Socket = null;
+        }
+    }
 
-	public function Connect( )
-	{
-		$connectTimeout = $this->Timeout;
-		$this->Socket = @fsockopen( $this->ServerAddress, $this->ServerPort, $errno, $errstr, $connectTimeout );
+    public function Connect()
+    {
+        $connectTimeout = $this->Timeout;
+        $this->Socket = @fsockopen($this->ServerAddress, $this->ServerPort, $errno, $errstr, $connectTimeout);
 
-		if( !$this->Socket )
-		{
-			$this->Socket = null;
-			
-			throw new MinecraftPingException( "Failed to connect or create a socket: $errno ($errstr)" );
-		}
+        if (!$this->Socket) {
+            $this->Socket = null;
 
-		// Set Read/Write timeout
-		stream_set_timeout( $this->Socket, $this->Timeout );
-	}
+            throw new MinecraftPingException("Failed to connect or create a socket: $errno ($errstr)");
+        }
 
-	public function Query( )
-	{
-		$TimeStart = microtime(true); // for read timeout purposes
+        // Set Read/Write timeout
+        stream_set_timeout($this->Socket, $this->Timeout);
+    }
 
-		// See http://wiki.vg/Protocol (Status Ping)
-		$Data = "\x00"; // packet ID = 0 (varint)
+    public function Query()
+    {
+        $TimeStart = microtime(true); // for read timeout purposes
 
-		$Data .= "\x04"; // Protocol version (varint)
-		$Data .= Pack( 'c', StrLen( $this->ServerAddress ) ) . $this->ServerAddress; // Server (varint len + UTF-8 addr)
-		$Data .= Pack( 'n', $this->ServerPort ); // Server port (unsigned short)
-		$Data .= "\x01"; // Next state: status (varint)
+        // See http://wiki.vg/Protocol (Status Ping)
+        $Data = "\x00"; // packet ID = 0 (varint)
 
-		$Data = Pack( 'c', StrLen( $Data ) ) . $Data; // prepend length of packet ID + data
+        $Data .= "\x04"; // Protocol version (varint)
+        $Data .= pack('c', strlen($this->ServerAddress)).$this->ServerAddress; // Server (varint len + UTF-8 addr)
+        $Data .= pack('n', $this->ServerPort); // Server port (unsigned short)
+        $Data .= "\x01"; // Next state: status (varint)
 
-		fwrite( $this->Socket, $Data ); // handshake
-		fwrite( $this->Socket, "\x01\x00" ); // status ping
+        $Data = pack('c', strlen($Data)).$Data; // prepend length of packet ID + data
 
-		$Length = $this->ReadVarInt( ); // full packet length
+        fwrite($this->Socket, $Data); // handshake
+        fwrite($this->Socket, "\x01\x00"); // status ping
 
-		if( $Length < 10 )
-		{
-			return FALSE;
-		} 
+        $Length = $this->ReadVarInt(); // full packet length
 
-		$this->ReadVarInt( ); // packet type, in server ping it's 0
+        if ($Length < 10) {
+            return false;
+        }
 
-		$Length = $this->ReadVarInt( ); // string length
+        $this->ReadVarInt(); // packet type, in server ping it's 0
 
-		$Data = "";
-		do
-		{
-			if(microtime(true) - $TimeStart > $this->Timeout)
-			{
-				throw new MinecraftPingException( 'Server read timed out' );
-			}
+        $Length = $this->ReadVarInt(); // string length
 
-			$Remainder = $Length - StrLen( $Data );
-			$block = fread( $this->Socket, $Remainder ); // and finally the json string
-			// abort if there is no progress
-			if(!$block)
-			{
-				throw new MinecraftPingException( 'Server returned too few data' );
-			}
+        $Data = '';
+        do {
+            if (microtime(true) - $TimeStart > $this->Timeout) {
+                throw new MinecraftPingException('Server read timed out');
+            }
 
-			$Data .= $block;
-		} while( StrLen($Data) < $Length );
+            $Remainder = $Length - strlen($Data);
+            $block = fread($this->Socket, $Remainder); // and finally the json string
+            // abort if there is no progress
+            if (!$block) {
+                throw new MinecraftPingException('Server returned too few data');
+            }
 
-		if( $Data === FALSE )
-		{
-			throw new MinecraftPingException( 'Server didn\'t return any data' );
-		}
+            $Data .= $block;
+        } while (strlen($Data) < $Length);
 
-		$Data = JSON_Decode( $Data, true );
+        if ($Data === false) {
+            throw new MinecraftPingException('Server didn\'t return any data');
+        }
 
-		if( JSON_Last_Error( ) !== JSON_ERROR_NONE )
-		{
-			if( Function_Exists( 'json_last_error_msg' ) )
-			{
-				throw new MinecraftPingException( JSON_Last_Error_Msg( ) );
-			}
-			else
-			{
-				throw new MinecraftPingException( 'JSON parsing failed' );
-			}
+        $Data = json_decode($Data, true);
 
-			return FALSE;
-		}
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            if (function_exists('json_last_error_msg')) {
+                throw new MinecraftPingException(json_last_error_msg());
+            } else {
+                throw new MinecraftPingException('JSON parsing failed');
+            }
 
-		return $Data;
-	}
+            return false;
+        }
 
-	public function QueryOldPre17( )
-	{
-		fwrite( $this->Socket, "\xFE\x01" );
-		$Data = fread( $this->Socket, 512 );
-		$Len = StrLen( $Data );
+        return $Data;
+    }
 
-		if( $Len < 4 || $Data[ 0 ] !== "\xFF" )
-		{
-			return FALSE;
-		}
+    public function QueryOldPre17()
+    {
+        fwrite($this->Socket, "\xFE\x01");
+        $Data = fread($this->Socket, 512);
+        $Len = strlen($Data);
 
-		$Data = SubStr( $Data, 3 ); // Strip packet header (kick message packet and short length)
-		$Data = iconv( 'UTF-16BE', 'UTF-8', $Data );
+        if ($Len < 4 || $Data[0] !== "\xFF") {
+            return false;
+        }
 
-		// Are we dealing with Minecraft 1.4+ server?
-		if( $Data[ 1 ] === "\xA7" && $Data[ 2 ] === "\x31" )
-		{
-			$Data = Explode( "\x00", $Data );
+        $Data = substr($Data, 3); // Strip packet header (kick message packet and short length)
+        $Data = iconv('UTF-16BE', 'UTF-8', $Data);
 
-			return Array(
-				'HostName'   => $Data[ 3 ],
-				'Players'    => IntVal( $Data[ 4 ] ),
-				'MaxPlayers' => IntVal( $Data[ 5 ] ),
-				'Protocol'   => IntVal( $Data[ 1 ] ),
-				'Version'    => $Data[ 2 ]
-			);
-		}
+        // Are we dealing with Minecraft 1.4+ server?
+        if ($Data[1] === "\xA7" && $Data[2] === "\x31") {
+            $Data = explode("\x00", $Data);
 
-		$Data = Explode( "\xA7", $Data );
+            return [
+                'HostName'   => $Data[3],
+                'Players'    => intval($Data[4]),
+                'MaxPlayers' => intval($Data[5]),
+                'Protocol'   => intval($Data[1]),
+                'Version'    => $Data[2],
+            ];
+        }
 
-		return Array(
-			'HostName'   => SubStr( $Data[ 0 ], 0, -1 ),
-			'Players'    => isset( $Data[ 1 ] ) ? IntVal( $Data[ 1 ] ) : 0,
-			'MaxPlayers' => isset( $Data[ 2 ] ) ? IntVal( $Data[ 2 ] ) : 0,
-			'Protocol'   => 0,
-			'Version'    => '1.3'
-		);
-	}
+        $Data = explode("\xA7", $Data);
 
-	private function ReadVarInt( )
-	{
-		$i = 0;
-		$j = 0;
+        return [
+            'HostName'   => substr($Data[0], 0, -1),
+            'Players'    => isset($Data[1]) ? intval($Data[1]) : 0,
+            'MaxPlayers' => isset($Data[2]) ? intval($Data[2]) : 0,
+            'Protocol'   => 0,
+            'Version'    => '1.3',
+        ];
+    }
 
-		while( true )
-		{
-			$k = @fgetc( $this->Socket );
+    private function ReadVarInt()
+    {
+        $i = 0;
+        $j = 0;
 
-			if( $k === FALSE )
-			{
-				return 0;
-			}
+        while (true) {
+            $k = @fgetc($this->Socket);
 
-			$k = Ord( $k );
+            if ($k === false) {
+                return 0;
+            }
 
-			$i |= ( $k & 0x7F ) << $j++ * 7;
+            $k = ord($k);
 
-			if( $j > 5 )
-			{
-				throw new MinecraftPingException( 'VarInt too big' );
-			}
+            $i |= ($k & 0x7F) << $j++ * 7;
 
-			if( ( $k & 0x80 ) != 128 )
-			{
-				break;
-			}
-		}
+            if ($j > 5) {
+                throw new MinecraftPingException('VarInt too big');
+            }
 
-		return $i;
-	}
+            if (($k & 0x80) != 128) {
+                break;
+            }
+        }
 
-	private function ResolveSRV()
-	{
-		if( ip2long( $this->ServerAddress ) !== false )
-		{
-			return;
-		}
+        return $i;
+    }
 
-		$Record = @dns_get_record( '_minecraft._tcp.' . $this->ServerAddress, DNS_SRV );
+    private function ResolveSRV()
+    {
+        if (ip2long($this->ServerAddress) !== false) {
+            return;
+        }
 
-		if( empty( $Record ) )
-		{
-			return;
-		}
+        $Record = @dns_get_record('_minecraft._tcp.'.$this->ServerAddress, DNS_SRV);
 
-		if( isset( $Record[ 0 ][ 'target' ] ) )
-		{
-			$this->ServerAddress = $Record[ 0 ][ 'target' ];
-		}
+        if (empty($Record)) {
+            return;
+        }
 
-		if( isset( $Record[ 0 ][ 'port' ] ) )
-		{
-			$this->ServerPort = $Record[ 0 ][ 'port' ];
-		}
-	}
+        if (isset($Record[0]['target'])) {
+            $this->ServerAddress = $Record[0]['target'];
+        }
+
+        if (isset($Record[0]['port'])) {
+            $this->ServerPort = $Record[0]['port'];
+        }
+    }
 }

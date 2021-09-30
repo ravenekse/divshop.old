@@ -2,26 +2,26 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php 
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+      <?php
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Użytkownicy ACP</h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-md-10 col-sm-12 mr-auto ml-auto">
                 <div class="card">
@@ -34,9 +34,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <?php if(!$admins): ?>
+                        <?php if (!$admins) { ?>
                             <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Aktualnie nie ma żadnych administratorów do wyświetlenia!</h4>
-                        <?php else: ?>
+                        <?php } else { ?>
                             <div class="table-responsive">
                                 <table class="table text-center table-md d-md-table mb-0">
                                     <thead>
@@ -52,7 +52,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($admins as $admin): ?>
+                                        <?php foreach ($admins as $admin) { ?>
                                             <tr>
                                                 <td class="pt-3">#<?php echo $admin['id']; ?></td>
                                                 <td>
@@ -70,51 +70,51 @@
                                                     </span>
                                                 </td>
                                                 <td class="pt-3">
-                                                    <?php if($settings['demoMode'] == 1 && $admin['lastIP'] != null): ?>
+                                                    <?php if ($settings['demoMode'] == 1 && $admin['lastIP'] != null) { ?>
                                                         W demo ukryte
-                                                    <?php elseif($settings['demoMode'] != 1 && $admin['lastIP']): ?>
+                                                    <?php } elseif ($settings['demoMode'] != 1 && $admin['lastIP']) { ?>
                                                         <?php echo xss_clean($admin['lastIP']); ?>
-                                                    <?php elseif($admin['lastIP'] == null): ?>
+                                                    <?php } elseif ($admin['lastIP'] == null) { ?>
                                                         Niedostępne
-                                                    <?php endif; ?>
+                                                    <?php } ?>
                                                 </td>
                                                 <td class="pt-3"><?php echo($admin['lastLogin'] != null) ? formatDate($admin['lastLogin']) : 'Nigdy'; ?></td>
                                                 <td class="d-flex">
-                                                    <?php if($admin['name'] == $this->session->userdata('name')): ?>
+                                                    <?php if ($admin['name'] == $this->session->userdata('name')) { ?>
                                                         <a href="<?php echo $this->config->base_url('panel/account'); ?>" class="btn btn-success btn-sm" data-toggle="tooltip" title="Edytuj administratora">
                                                             <i class="bi bi-pencil"></i>
                                                         </a>
                                                         <button type="button" class="btn btn-danger btn-sm ml-1" data-toggle="tooltip" title="Usuń administratora" onclick="notToday();">
                                                             <i class="bi bi-trash"></i>
                                                         </button>
-                                                    <?php else: ?>
+                                                    <?php } else { ?>
                                                         <?php echo form_open(base_url('panel/edit/admin')); ?>
                                                             <input type="hidden" name="adminId" value="<?php echo $admin['id']; ?>">
                                                             <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" title="Edytuj administratora">
                                                                 <i class="bi bi-pencil"></i>
                                                             </button>
                                                         <?php echo form_close(); ?>
-                                                        <?php if($admin['id'] != 1): ?>
+                                                        <?php if ($admin['id'] != 1) { ?>
                                                             <?php echo form_open(base_url('panel/remove/admin')); ?>
                                                                 <input type="hidden" name="adminId" value="<?php echo $admin['id']; ?>">
                                                                 <button type="button" class="btn btn-danger btn-sm ml-1" data-toggle="tooltip" title="Usuń administratora" onclick="areYouSure(this);">
                                                                     <i class="bi bi-trash"></i>
                                                                 </button>
                                                             <?php echo form_close(); ?>
-                                                        <?php else: ?>
+                                                        <?php } else { ?>
                                                             <button type="button" class="btn btn-danger btn-sm ml-1" data-toggle="tooltip" title="Usuń administratora" onclick="youCanNot();">
                                                                 <i class="bi bi-trash"></i>
                                                             </button>
-                                                        <?php endif; ?>
-                                                    <?php endif; ?>
+                                                        <?php } ?>
+                                                    <?php } ?>
                                                 </td>
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
                             <?php echo $pagination; ?>
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

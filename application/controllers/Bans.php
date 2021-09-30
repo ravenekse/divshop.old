@@ -2,59 +2,59 @@
 /**
  * @author   DIVShop Team
  * @copyright   Copyright (c) 2021 DIVShop.pro (https://divshop.pro/)
+ *
  * @link   https://divshop.pro
-**/
+ **/
+defined('BASEPATH') or exit('No direct script access allowed');
 
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Bans extends CI_Controller {
-	public function __construct() {
-		parent::__construct();
+class Bans extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
     }
 
-    public function index($page = 1) {
-
+    public function index($page = 1)
+    {
         $settings = $this->SettingsM->getSettings();
 
-        if(!$this->session->userdata('logged') && $settings['pageActive'] == 0) {
+        if (!$this->session->userdata('logged') && $settings['pageActive'] == 0) {
 
-			/**  Head section  */
-			$headerD['settings'] = $this->SettingsM->getSettings();
-			$headerD['pageTitle'] = $headerD['settings']['pageTitle'] . " | Strona wyłączona";
-			$this->load->view('components/Header', $headerD);
+            /**  Head section  */
+            $headerD['settings'] = $this->SettingsM->getSettings();
+            $headerD['pageTitle'] = $headerD['settings']['pageTitle'].' | Strona wyłączona';
+            $this->load->view('components/Header', $headerD);
 
-			/**  Body section  */
-			$bodyD['pageBreak'] = $this->SettingsM->getSettings();
-			$bodyD['pageBreak'] = array(
-                'title' => $bodyD['pageBreak']['pageBreakTitle'],
-                'description' => $bodyD['pageBreak']['pageBreakDescription']
-            );
-			$this->load->view('components/PageBreak', $bodyD);
-
-		} else {
-
-            require_once(APPPATH . 'libraries/divshop-api/divsAPI.php');
+            /**  Body section  */
+            $bodyD['pageBreak'] = $this->SettingsM->getSettings();
+            $bodyD['pageBreak'] = [
+                'title'       => $bodyD['pageBreak']['pageBreakTitle'],
+                'description' => $bodyD['pageBreak']['pageBreakDescription'],
+            ];
+            $this->load->view('components/PageBreak', $bodyD);
+        } else {
+            require_once APPPATH.'libraries/divshop-api/divsAPI.php';
             $this->load->model('ModulesM');
             $this->load->model('NewsM');
             $this->load->model('BansM');
             $this->load->model('PagesM');
             $api = new DIVShopAPI();
-            $bodyD['divsAPI'] = array(
-                'divsVersion'  =>  $api->get_current_version()
-            );
+            $bodyD['divsAPI'] = [
+                'divsVersion'  => $api->get_current_version(),
+            ];
             $bodyD['modules'] = $this->ModulesM->getAll();
 
             /**  Head section  */
             $headerD['settings'] = $this->SettingsM->getSettings();
             $headerD['pageTitle'] = $headerD['settings']['pageTitle'];
-            $headerD['pageSubtitle'] = "Bany";
+            $headerD['pageSubtitle'] = 'Bany';
             $this->load->view('components/Header', $headerD);
 
             /**  Body section  */
             $bodyD['news'] = $this->NewsM->getAll();
             $bodyD['pages'] = $this->PagesM->getAll();
 
-            if($page == 1) {
+            if ($page == 1) {
                 $start = 0;
             } else {
                 $start = ($page - 1) * 15;
@@ -68,10 +68,10 @@ class Bans extends CI_Controller {
             $config['per_page'] = 15;
             $config['uri_segment'] = 2;
             $config['num_links'] = 3;
-            $config['use_page_numbers'] = TRUE;
-            $config['attributes'] = array('class' => 'page-link');
-            $config['first_link'] = FALSE;
-            $config['last_link'] = FALSE;
+            $config['use_page_numbers'] = true;
+            $config['attributes'] = ['class' => 'page-link'];
+            $config['first_link'] = false;
+            $config['last_link'] = false;
             $config['full_tag_open'] = '<nav class="mt-5"><ul class="pagination justify-content-center">';
             $config['full_tag_close'] = '</ul></nav>';
             $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
@@ -89,7 +89,6 @@ class Bans extends CI_Controller {
             $bodyD['pagination'] = $this->pagination->create_links();
 
             $this->load->view('Bans', $bodyD);
-
         }
     }
 }

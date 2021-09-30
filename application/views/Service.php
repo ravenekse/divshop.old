@@ -20,19 +20,19 @@
                         <div class="col-sm-12 col-md-6 text-center text-md-left">
                             <h3 class="divshop-section-title text-center text-md-left"><i class="fas fa-shopping-basket"></i>&nbsp;Usługa <b><?php echo $service['name']; ?></b></h3>
                         </div>
-                        <?php if($modules[4]['moduleName'] == "vouchers" && $modules[4]['moduleEnabled'] == 1): ?>
+                        <?php if ($modules[4]['moduleName'] == 'vouchers' && $modules[4]['moduleEnabled'] == 1) { ?>
                             <div class="col-sm-12 col-md-6 text-center text-md-right pt-md-3">
                                 <a href="<?php echo $this->config->base_url('voucher'); ?>" class="btn btn-divshop btn-sm"><i class="fas fa-key"></i>&nbsp;Realizuj voucher</a>
                             </div>
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                     <div class="card">
                         <div class="row">
                             <div class="col-md-6">
-                                <?php if($service['image'] != null): ?>
+                                <?php if ($service['image'] != null) { ?>
                                     <img class="divshop-service-purchase-image" src="<?php echo $service['image']; ?>" alt="<?php echo xss_clean($service['name']); ?> image">
                                     <div style="border-bottom: 2px solid rgba(119,119,119,0.25);"></div>
-                                <?php endif; ?>
+                                <?php } ?>
                                 <div class="divshop-service-info">
                                     <h4 class="title text-center mb-2"><?php echo xss_clean($service['name']); ?></h4>
                                     <p>
@@ -42,42 +42,42 @@
                             </div>
                             <div class="col-md-6 mt-5">
                                 <?php $activePill = 0; ?>
-                                <?php if($payments['sms']['userid'] == null && $payments['paypal']['address'] == null && ($payments['transfer']['shopid'] && $payments['transfer']['userid'] && $payments['transfer']['hash']) == null): ?>
+                                <?php if ($payments['sms']['userid'] == null && $payments['paypal']['address'] == null && ($payments['transfer']['shopid'] && $payments['transfer']['userid'] && $payments['transfer']['hash']) == null) { ?>
                                     <h6 class="text-center"><i class="fas fa-exclamation-triangle"></i> Aby umożliwić zakup usługi, wymagane jest skonfigurowanie minimum jednej metody płatności!</h6>
-                                <?php else: ?>
+                                <?php } else { ?>
                                     <ul class="nav nav-pills nav-pills-divshop d-flex justify-content-center">
-                                        <?php if(($service['smsConfig'] && $payments['sms']['userid']) != null && $settings['smsOperator'] != 0): ?>
+                                        <?php if (($service['smsConfig'] && $payments['sms']['userid']) != null && $settings['smsOperator'] != 0) { ?>
                                             <li class="nav-item">
                                                 <a class="nav-link <?php echo($activePill == 0) ? 'active' : ''; ?>" href="#divshopSMS" data-toggle="tab">
                                                     <i class="fas fa-mobile-alt"></i> 
                                                     SMS Premium
                                                 </a>
                                             </li>
-                                        <?php $activePill++; endif; ?>
-                                        <?php if($service['paypalCost'] && $payments['paypal']['address'] != null): ?>
+                                        <?php $activePill++; } ?>
+                                        <?php if ($service['paypalCost'] && $payments['paypal']['address'] != null) { ?>
                                             <li class="nav-item">
                                                 <a class="nav-link <?php echo($activePill == 0) ? 'active' : ''; ?>" href="#divshopPayPal" data-toggle="tab">
                                                     <i class="fab fa-paypal"></i> 
                                                     PayPal
                                                 </a>
                                             </li>
-                                        <?php $activePill++; endif; ?>
-                                        <?php if($service['transferCost'] != null && ($payments['transfer']['shopid'] && $payments['transfer']['userid'] && $payments['transfer']['hash']) != null): ?>
+                                        <?php $activePill++; } ?>
+                                        <?php if ($service['transferCost'] != null && ($payments['transfer']['shopid'] && $payments['transfer']['userid'] && $payments['transfer']['hash']) != null) { ?>
                                             <li class="nav-item">
                                                 <a class="nav-link <?php echo($activePill == 0) ? 'active' : ''; ?>" href="#divshopTransfer" data-toggle="tab">
                                                     <i class="fas fa-credit-card"></i>
                                                     Przelew
                                                 </a>
                                             </li>
-                                        <?php $activePill++; endif; ?>
+                                        <?php $activePill++; } ?>
                                     </ul>
                                     <div class="tab-content tab-space">
                                         <?php $activeTab = 0; ?>
-                                        <?php if(($service['smsConfig'] && $payments['sms']['userid']) != null && $settings['smsOperator'] != 0): ?>
+                                        <?php if (($service['smsConfig'] && $payments['sms']['userid']) != null && $settings['smsOperator'] != 0) { ?>
                                             <div class="tab-pane text-center <?php echo($activeTab == 0) ? 'active show' : ''; ?>" id="divshopSMS">
                                                 <h5 class="title">Płatność przez SMS Premium</h5>
                                                 <p>
-                                                    Koszt SMS: <span class="badge badge-success" style="position:relative;top:-1px;"><?php echo number_format(getBruttoPrice($service['smsConfig']['smsNumber'], 1), 2, ',', ' ') . ' zł (w tym VAT)'; ?></span>
+                                                    Koszt SMS: <span class="badge badge-success" style="position:relative;top:-1px;"><?php echo number_format(getBruttoPrice($service['smsConfig']['smsNumber'], 1), 2, ',', ' ').' zł (w tym VAT)'; ?></span>
 
                                                     <br><br>
                                                     Aby zakupić usługę, wyślij SMS o treści <b><?php echo $service['smsConfig']['smsChannel']; ?></b> pod numer <b><?php echo $service['smsConfig']['smsNumber']; ?></b>.
@@ -122,9 +122,9 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                        <?php $activeTab++; endif; ?>
+                                        <?php $activeTab++; } ?>
 
-                                        <?php if(($service['paypalCost'] && $payments['paypal']['address']) != null): ?>
+                                        <?php if (($service['paypalCost'] && $payments['paypal']['address']) != null) { ?>
                                             <div class="tab-pane text-center <?php echo($activeTab == 0) ? 'active show' : ''; ?>" id="divshopPayPal">
                                                 <h5 class="title">Płatność przez PayPal</h5>
                                                 <p>
@@ -166,9 +166,9 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                        <?php $activeTab++; endif; ?>
+                                        <?php $activeTab++; } ?>
 
-                                        <?php if($service['transferCost'] != null && ($payments['transfer']['shopid'] && $payments['transfer']['userid'] && $payments['transfer']['hash']) != null): ?> 
+                                        <?php if ($service['transferCost'] != null && ($payments['transfer']['shopid'] && $payments['transfer']['userid'] && $payments['transfer']['hash']) != null) { ?> 
                                             <div class="tab-pane text-center <?php echo($activeTab == 0) ? 'active show' : ''; ?>" id="divshopTransfer">
                                                 <h5 class="title">Płatność przelewem</h5>
                                                 <p>
@@ -210,9 +210,9 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                        <?php $activeTab++; endif; ?>
+                                        <?php $activeTab++; } ?>
                                     </div>
-                                <?php endif; ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

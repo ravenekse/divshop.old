@@ -2,10 +2,10 @@
 /**
  * @author   DIVShop Team
  * @copyright   Copyright (c) 2021 DIVShop.pro (https://divshop.pro/)
+ *
  * @link   https://divshop.pro
-**/
-
-defined('BASEPATH') OR exit('No direct script access allowed');
+ **/
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!--  Scripts everywhere  -->
 <script src="<?php echo $this->config->base_url('assets/js/core/jquery.min.js'); ?>"></script>
@@ -24,14 +24,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         sleep(2600).then(() => (Notiflix.Report.Failure("Oops, coś poszło nie tak :(", "Ta czynność jest zablokowana w wersji demonstracyjnej sklepu", "Rozumiem"), !1));
     }
 </script>
-<?php if($this->uri->rsegment('1') == "home" or $this->uri->segment('1') == "news" or $this->uri->rsegment('1') == "shop" or $this->uri->rsegment('1') == "service" or $this->uri->rsegment('1') == "payments" or $this->uri->rsegment('1') == "antybot" or $this->uri->rsegment('1') == "stats" or $this->uri->rsegment('1') == "bans" or $this->uri->rsegment('1') == "page" or $this->uri->rsegment('1') == "voucher"): ?>
-    <?php if($this->uri->rsegment('1') == "antybot"): ?>
+<?php if ($this->uri->rsegment('1') == 'home' or $this->uri->segment('1') == 'news' or $this->uri->rsegment('1') == 'shop' or $this->uri->rsegment('1') == 'service' or $this->uri->rsegment('1') == 'payments' or $this->uri->rsegment('1') == 'antybot' or $this->uri->rsegment('1') == 'stats' or $this->uri->rsegment('1') == 'bans' or $this->uri->rsegment('1') == 'page' or $this->uri->rsegment('1') == 'voucher') { ?>
+    <?php if ($this->uri->rsegment('1') == 'antybot') { ?>
         <script src="https://www.google.com/recaptcha/api.js"></script>
-    <?php endif; ?>
+    <?php } ?>
     <script src="<?php echo $this->config->base_url('assets/js/core/bootstrap-material-design.min.js'); ?>"></script>
     <script src="<?php echo $this->config->base_url('assets/js/plugins/clipboard.min.js'); ?>"></script>
     <script src="<?php echo $this->config->base_url('assets/js/material-kit.min.js'); ?>"></script>
-    <?php if($settings['pagePreloader'] == 1): ?>
+    <?php if ($settings['pagePreloader'] == 1) { ?>
         <script type="text/javascript">
             $(document).ready(function() {
                 setTimeout(function(){
@@ -39,9 +39,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }, 500);
             });
         </script>
-    <?php endif; ?>
+    <?php } ?>
     <script type="text/javascript">
-        <?php if($this->uri->rsegment('1') == "service"): ?>
+        <?php if ($this->uri->rsegment('1') == 'service') { ?>
             $('.btnBuyService').click(function() {
                 var btn = $(this);
                 $(btn).html('<i class="fas fa-spinner fa-spin"></i>&nbsp;&nbsp;Proszę czekać...');
@@ -50,15 +50,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }, 100000)
             });
             console.log('Pamiętaj! Jeżeli edytujesz to miejsce przez zbadaj element, twoja płatność może zostać zrealizowana nieprawidłowo lub nie zostać zrealizowana w ogóle.');
-        <?php endif; ?>
-        <?php if($this->uri->rsegment('1') == "payments" && $this->uri->rsegment('2') == "paypal"): ?>
+        <?php } ?>
+        <?php if ($this->uri->rsegment('1') == 'payments' && $this->uri->rsegment('2') == 'paypal') { ?>
             window.onload = function() {
                 setTimeout(function() {
                     document.getElementById('paypalPayment').submit();
                 }, 1000);
             }
-        <?php endif; ?>
-        <?php if($this->uri->rsegment('1') == "stats" or $this->uri->rsegment('1') == "bans"): ?>
+        <?php } ?>
+        <?php if ($this->uri->rsegment('1') == 'stats' or $this->uri->rsegment('1') == 'bans') { ?>
             $('.divshop-table-element').hover(function(e) {
                 element = $(e.target);
                 if(element != this) {
@@ -72,20 +72,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('.divshop-table-element').css('filter', 'grayscale(0%)');
                 $('.divshop-table-element').css('opacity', '1');
             });
-        <?php endif; ?>
-        <?php if($this->uri->rsegment('1') == "service"): ?>
+        <?php } ?>
+        <?php if ($this->uri->rsegment('1') == 'service') { ?>
             $(document).ready(function() {
                 $('#smsCode').characterCounter();
             });
-        <?php endif; ?>
-        <?php if($this->uri->rsegment('1') == "voucher"): ?>
+        <?php } ?>
+        <?php if ($this->uri->rsegment('1') == 'voucher') { ?>
             $(document).ready(function() {
                 $('#voucherCode').characterCounter();
             });
-        <?php endif; ?>
+        <?php } ?>
     </script>
-<?php endif; ?>
-<?php if($this->uri->rsegment('1') == "admin" && $this->uri->rsegment('2') == "auth"): ?>
+<?php } ?>
+<?php if ($this->uri->rsegment('1') == 'admin' && $this->uri->rsegment('2') == 'auth') { ?>
     <!--  Scripts for Admin login  -->
     <script src="<?php echo $this->config->base_url('assets/panel/modules/bootstrap/js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo $this->config->base_url('assets/panel/js/stisla.js'); ?>"></script>
@@ -99,8 +99,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }, 100000)
         });
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('1') == "panel"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('1') == 'panel') { ?>
     <!--  Scripts for ACP  -->
     <script src="<?php echo $this->config->base_url('assets/panel/modules/tooltip.js'); ?>"></script>
     <script src="<?php echo $this->config->base_url('assets/panel/modules/bootstrap/js/bootstrap.min.js'); ?>"></script>
@@ -126,8 +126,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('#btnChangeTheme').prop('checked', false);
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->rsegment('1') == "dashboard"): ?>
+<?php } ?>
+<?php if ($this->uri->rsegment('1') == 'dashboard') { ?>
     <script type="text/javascript">
         var ctx = document.getElementById("divshopPurchasesStatistics").getContext("2d");
         if($('body').hasClass('dark-theme')) {
@@ -151,8 +151,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }, 100000)
         }); 
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "admins"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'admins') { ?>
     <script type="text/javascript">
         function notToday() {
             sleep(200).then(() => (Notiflix.Notify.Failure("Nie możesz usunąć konta na które jesteś właśnie zalogowany(-a)"), !1));
@@ -168,28 +168,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'Tak, usuwamy!',
                 'Anuluj',
                 function(){
-                    <?php if($settings['demoMode'] == 0): ?>
+                    <?php if ($settings['demoMode'] == 0) { ?>
                         if(admin != null) {
                             Notiflix.Loading.Circle('Trwa usuwanie administratora...');
                             Notiflix.Loading.Remove(3000);
                             setTimeout(function(){ admin.form.submit(); }, 2500);
                         }
-                    <?php else: ?>
+                    <?php } else { ?>
                         Notiflix.Loading.Circle('Trwa usuwanie administratora...');
                         Notiflix.Loading.Remove(2500);
                         sleep(2600).then(() => {
                             Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                             return false;
                         });
-                    <?php endif; ?>
+                    <?php } ?>
                 }
             ); 
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "servers"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'servers') { ?>
     <script type="text/javascript">
-        <?php foreach($servers as $server): ?>
+        <?php foreach ($servers as $server) { ?>
             function showRconPassword<?php echo $server['id']; ?>() {
                 var divsRconPassInput = document.getElementById('divsServerRconPass<?php echo $server['id']; ?>');
                 var divsPassIconShow = document.getElementById('showPassword<?php echo $server['id']; ?>');
@@ -204,7 +204,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     divsPassIconHide.classList.add('d-none');
                 }
             }
-        <?php endforeach; ?>
+        <?php } ?>
         function areYouSure(server = null) {
             Notiflix.Confirm.Init({ width:"600px",}); 
             Notiflix.Confirm.Show( 
@@ -213,26 +213,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'Tak, usuwamy!',
                 'Anuluj',
                 function(){
-                    <?php if($settings['demoMode'] == 0): ?>
+                    <?php if ($settings['demoMode'] == 0) { ?>
                         if(server != null) {
                             Notiflix.Loading.Circle('Trwa usuwanie serwera...');
                             Notiflix.Loading.Remove(3000);
                             setTimeout(function(){ server.form.submit(); }, 2500);
                         }
-                    <?php else: ?>
+                    <?php } else { ?>
                         Notiflix.Loading.Circle('Trwa usuwanie serwera...');
                         Notiflix.Loading.Remove(2500);
                         sleep(2600).then(() => {
                             Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                             return false;
                         });
-                    <?php endif; ?>
+                    <?php } ?>
                 }
             ); 
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "services"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'services') { ?>
     <script type="text/javascript">
         function areYouSure(service = null) {
             Notiflix.Confirm.Init({ width:"600px",}); 
@@ -242,26 +242,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'Tak, usuwamy!',
                 'Anuluj',
                 function(){
-                    <?php if($settings['demoMode'] == 0): ?>
+                    <?php if ($settings['demoMode'] == 0) { ?>
                         if(service != null) {
                             Notiflix.Loading.Circle('Trwa usuwanie usługi...');
                             Notiflix.Loading.Remove(3000);
                             setTimeout(function(){ service.form.submit(); }, 2500);
                         }
-                    <?php else: ?>
+                    <?php } else { ?>
                         Notiflix.Loading.Circle('Trwa usuwanie usługi...');
                         Notiflix.Loading.Remove(2500);
                         sleep(2600).then(() => {
                             Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                             return false;
                         });
-                    <?php endif; ?>
+                    <?php } ?>
                 }
             ); 
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "news"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'news') { ?>
     <script type="text/javascript">
         function areYouSure(news = null) {
             Notiflix.Confirm.Init({ width:"600px",}); 
@@ -271,26 +271,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'Tak, usuwamy!',
                 'Anuluj',
                 function(){
-                    <?php if($settings['demoMode'] == 0): ?>
+                    <?php if ($settings['demoMode'] == 0) { ?>
                         if(news != null) {
                             Notiflix.Loading.Circle('Trwa usuwanie newsa...');
                             Notiflix.Loading.Remove(3000);
                             setTimeout(function(){ news.form.submit(); }, 2500);
                         }
-                    <?php else: ?>
+                    <?php } else { ?>
                         Notiflix.Loading.Circle('Trwa usuwanie newsa...');
                         Notiflix.Loading.Remove(2500);
                         sleep(2600).then(() => {
                             Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                             return false;
                         });
-                    <?php endif; ?>
+                    <?php } ?>
                 }
             ); 
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "pages"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'pages') { ?>
     <script type="text/javascript">
         function areYouSure(page = null) {
             Notiflix.Confirm.Init({ width:"600px",}); 
@@ -300,26 +300,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'Tak, usuwamy!',
                 'Anuluj',
                 function(){
-                    <?php if($settings['demoMode'] == 0): ?>
+                    <?php if ($settings['demoMode'] == 0) { ?>
                         if(page != null) {
                             Notiflix.Loading.Circle('Trwa usuwanie strony...');
                             Notiflix.Loading.Remove(3000);
                             setTimeout(function(){ page.form.submit(); }, 2500);
                         }
-                    <?php else: ?>
+                    <?php } else { ?>
                         Notiflix.Loading.Circle('Trwa usuwanie strony...');
                         Notiflix.Loading.Remove(2500);
                         sleep(2600).then(() => {
                             Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                             return false;
                         });
-                    <?php endif; ?>
+                    <?php } ?>
                 }
             ); 
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "vouchers"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'vouchers') { ?>
     <script type="text/javascript">
         function areYouSure(voucher = null) {
             Notiflix.Confirm.Init({ width:"600px",}); 
@@ -329,67 +329,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 'Tak, usuwamy!',
                 'Anuluj',
                 function(){
-                    <?php if($settings['demoMode'] == 0): ?>
+                    <?php if ($settings['demoMode'] == 0) { ?>
                         if(voucher != null) {
                             Notiflix.Loading.Circle('Trwa usuwanie vouchera...');
                             Notiflix.Loading.Remove(3000);
                             setTimeout(function(){ voucher.form.submit(); }, 2500);
                         }
-                    <?php else: ?>
+                    <?php } else { ?>
                         Notiflix.Loading.Circle('Trwa usuwanie vouchera...');
                         Notiflix.Loading.Remove(2500);
                         sleep(2600).then(() => {
                             Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                             return false;
                         });
-                    <?php endif; ?>
+                    <?php } ?>
                 }
             ); 
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "settings" || $this->uri->segment('2') == "paysettings"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'settings' || $this->uri->segment('2') == 'paysettings') { ?>
     <script type="text/javascript">
         function saveSettings(settings = null) {
-            <?php if($settings['demoMode'] == 0): ?>
+            <?php if ($settings['demoMode'] == 0) { ?>
                 if(settings != null) {
                     Notiflix.Loading.Circle('Trwa zapisywanie ustawień...');
                     Notiflix.Loading.Remove(3000);
                     setTimeout(function(){ settings.form.submit(); }, 2500);
                 }
-            <?php else: ?>
+            <?php } else { ?>
                 Notiflix.Loading.Circle('Trwa zapisywanie ustawień...');
                 Notiflix.Loading.Remove(2500);
                 sleep(2600).then(() => {
                     Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                     return false;
                 });
-            <?php endif; ?>
+            <?php } ?>
         }
     </script>
-<?php endif; ?>
-<?php if($this->uri->segment('2') == "modules"): ?>
+<?php } ?>
+<?php if ($this->uri->segment('2') == 'modules') { ?>
     <script type="text/javascript">
         function changeModuleStatus(mod = null) {
-            <?php if($settings['demoMode'] == 0): ?>
+            <?php if ($settings['demoMode'] == 0) { ?>
                 if(mod != null) {
                     Notiflix.Loading.Circle('Trwa zmiana ustawień modułu...');
                     Notiflix.Loading.Remove(3000);
                     setTimeout(function(){ mod.form.submit(); }, 2500);
                 }
-            <?php else: ?>
+            <?php } else { ?>
                 Notiflix.Loading.Circle('Trwa zmiana ustawień modułu...');
                 Notiflix.Loading.Remove(2500);
                 sleep(2600).then(() => {
                     Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                     return false;
                 });
-            <?php endif; ?>
+            <?php } ?>
         }
     </script>
-<?php endif; ?>
+<?php } ?>
 
-<?php if($this->uri->segment('2') == "add" or $this->uri->segment('2') == "account" or $this->uri->segment('2') == "settings" or $this->uri->segment('2') == "paysettings"): ?>
+<?php if ($this->uri->segment('2') == 'add' or $this->uri->segment('2') == 'account' or $this->uri->segment('2') == 'settings' or $this->uri->segment('2') == 'paysettings') { ?>
     <script type="text/javascript">
         $('#btnAddSubmit').click(function() {
             var btn = $(this);
@@ -399,7 +399,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }, 100000)
         });
 
-        <?php if($this->uri->segment('2') == "add" && $this->uri->segment('3') == "server"): ?>
+        <?php if ($this->uri->segment('2') == 'add' && $this->uri->segment('3') == 'server') { ?>
             $('#customFile').change(function() {
                 var i = $(this).prev('label').clone();
                 var file = $('#customFile')[0].files[0].name;
@@ -433,8 +433,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     divsPassIconHide.classList.add('d-none');
                 }
             }
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "add" && $this->uri->segment('3') == "admin"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'add' && $this->uri->segment('3') == 'admin') { ?>
             function readURL(input) {
                 if(input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -457,8 +457,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#removeImage').hide();
                 $('#imageUpload').val(null);
             });
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "account"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'account') { ?>
             function readURL(input) {
                 if(input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -481,8 +481,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#removeImage').hide();
                 $('#imageUpload').val(null);
             });
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "add" && $this->uri->segment('3') == "service"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'add' && $this->uri->segment('3') == 'service') { ?>
             $('#customFile').change(function() {
                 var i = $(this).prev('label').clone();
                 var file = $('#customFile')[0].files[0].name;
@@ -494,8 +494,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#removeImage').hide();
                 $('#customFile').val(null);
             });
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "add" && $this->uri->segment('3') == "news"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'add' && $this->uri->segment('3') == 'news') { ?>
             $('#customFile').change(function() {
                 var i = $(this).prev('label').clone();
                 var file = $('#customFile')[0].files[0].name;
@@ -507,8 +507,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#removeImage').hide();
                 $('#customFile').val(null);
             });
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "settings"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'settings') { ?>
             $('#customFile').change(function() {
                 var i = $(this).prev('label').clone();
                 var file = $('#customFile')[0].files[0].name;
@@ -556,8 +556,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     divsRecaptchaSecretIconHide.classList.add('d-none');
                 }
             }
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "paysettings"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'paysettings') { ?>
             function showTransferHash() {
                 var divsPaymentTransferHash = document.getElementById('divsPaymentTransferHash');
                 var divsPaymentTransferHashIconShow = document.getElementById('showHash');
@@ -572,11 +572,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     divsPaymentTransferHashIconHide.classList.add('d-none');
                 }
             }
-        <?php endif; ?>
+        <?php } ?>
     </script>
-<?php endif; ?>
+<?php } ?>
 
-<?php if($this->uri->segment('2') == "edit"): ?>
+<?php if ($this->uri->segment('2') == 'edit') { ?>
     <script type="text/javascript">
         $('#btnEditSubmit').click(function() {
             var btn = $(this);
@@ -586,7 +586,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }, 100000)
         });
 
-        <?php if($this->uri->segment('2') == "edit" && $this->uri->segment('3') == "server"): ?>
+        <?php if ($this->uri->segment('2') == 'edit' && $this->uri->segment('3') == 'server') { ?>
             $('#customFile').change(function() {
                 var i = $(this).prev('label').clone();
                 var file = $('#customFile')[0].files[0].name;
@@ -620,8 +620,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     divsPassIconHide.classList.add('d-none');
                 }
             }
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "edit" && $this->uri->segment('3') == "admin"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'edit' && $this->uri->segment('3') == 'admin') { ?>
             function readURL(input) {
                 if(input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -644,8 +644,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#removeImage').hide();
                 $('#imageUpload').val(null);
             });
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "edit" && $this->uri->segment('3') == "service"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'edit' && $this->uri->segment('3') == 'service') { ?>
             $('#customFile').change(function() {
                 var i = $(this).prev('label').clone();
                 var file = $('#customFile')[0].files[0].name;
@@ -657,8 +657,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#removeImage').hide();
                 $('#customFile').val(null);
             });
-        <?php endif; ?>
-        <?php if($this->uri->segment('2') == "edit" && $this->uri->segment('3') == "news"): ?>
+        <?php } ?>
+        <?php if ($this->uri->segment('2') == 'edit' && $this->uri->segment('3') == 'news') { ?>
             $('#customFile').change(function() {
                 var i = $(this).prev('label').clone();
                 var file = $('#customFile')[0].files[0].name;
@@ -670,23 +670,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $('#removeImage').hide();
                 $('#customFile').val(null);
             });
-        <?php endif; ?>
+        <?php } ?>
     </script>
-<?php endif; ?>
+<?php } ?>
 
-<?php if(isset($_SESSION['messageSuccessSmall'])): ?>
+<?php if (isset($_SESSION['messageSuccessSmall'])) { ?>
     <script type="text/javascript">
         Notiflix.Notify.Success("<?php echo $_SESSION['messageSuccessSmall']; ?>");
     </script>
-<?php endif; unset($_SESSION['messageSuccessSmall']); ?>
+<?php } unset($_SESSION['messageSuccessSmall']); ?>
 
-<?php if(isset($_SESSION['messageDangerSmall'])): ?>
+<?php if (isset($_SESSION['messageDangerSmall'])) { ?>
     <script type="text/javascript">
         Notiflix.Notify.Failure("<?php echo $_SESSION['messageDangerSmall']; ?>");
     </script>
-<?php endif; unset($_SESSION['messageDangerSmall']); ?>
+<?php } unset($_SESSION['messageDangerSmall']); ?>
 
-<?php if(isset($_SESSION['messageSuccessBig'])): ?>
+<?php if (isset($_SESSION['messageSuccessBig'])) { ?>
     <script type="text/javascript">
         Notiflix.Report.Success( 
             'Udało się!', 
@@ -694,9 +694,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             'Zamknij'
         ); 
     </script>
-<?php endif; unset($_SESSION['messageSuccessBig']); ?>
+<?php } unset($_SESSION['messageSuccessBig']); ?>
 
-<?php if(isset($_SESSION['messageDangerBig'])): ?>
+<?php if (isset($_SESSION['messageDangerBig'])) { ?>
     <script type="text/javascript">
         Notiflix.Report.Failure( 
             'Oops, coś poszło nie tak :(', 
@@ -704,33 +704,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             'Rozumiem'
         );
     </script>
-<?php endif; unset($_SESSION['messageDangerBig']); ?>
+<?php } unset($_SESSION['messageDangerBig']); ?>
 
-<?php if($this->uri->rsegment('1') == "modules"): ?>
+<?php if ($this->uri->rsegment('1') == 'modules') { ?>
     <script type="text/javascript">
         function changeModuleStatus(f = null) {
-            <?php if($settings['demoMode'] == 0): ?>
+            <?php if ($settings['demoMode'] == 0) { ?>
                 if(f != null) {
                     Notiflix.Loading.Circle('Trwa zmiana ustawień modułu...');
                     Notiflix.Loading.Remove(3000);
                     setTimeout(function(){ f.form.submit(); }, 2500);
                 }
-            <?php else: ?>
+            <?php } else { ?>
                 Notiflix.Loading.Circle('Trwa zmiana ustawień modułu...');
                 Notiflix.Loading.Remove(2500);
                 sleep(2600).then(() => {
                     Notiflix.Report.Failure('Oops, coś poszło nie tak :(', 'Ta czynność jest zablokowana w wersji demonstracyjnej sklepu', 'Rozumiem');
                     return false;
                 });
-            <?php endif; ?>
+            <?php } ?>
         }
     </script>
-<?php endif; ?>
+<?php } ?>
 
-<?php if(isset($_SESSION['divsUpdateAvailable'])): ?>
+<?php if (isset($_SESSION['divsUpdateAvailable'])) { ?>
     <script type="text/javascript">
         $(window).on('load',function(){
             $('#divsUpdateAvailable').modal('show');
         });
     </script>
-<?php endif; unset($_SESSION['divsUpdateAvailable']); ?>
+<?php } unset($_SESSION['divsUpdateAvailable']); ?>

@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group bmd-form-group">
                                     <label for="voucherCode" class="bmd-label-floating">Kod vouchera</label>
-                                    <input type="text" class="form-control" name="voucherCode" id="voucherCode" maxlength="<?php echo (strlen($settings['voucherPrfx']) + $settings['voucherLength']); ?>">
+                                    <input type="text" class="form-control" name="voucherCode" id="voucherCode" maxlength="<?php echo strlen($settings['voucherPrfx']) + $settings['voucherLength']; ?>">
                                 </div>
                                 <div class="text-center">
                                     <button class="btn btn-divshop btn-sm mt-3"><i class="fas fa-check"></i>&nbsp;&nbsp;Realizuj</button>

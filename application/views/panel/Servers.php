@@ -2,26 +2,26 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
-      <?php 
-        if(file_exists(APPPATH . 'views/panel/components/Sidebar.php') && file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          $this->load->view('panel/components/Navbar');
-          $this->load->view('panel/components/Sidebar');
-        elseif(! file_exists(APPPATH . 'views/panel/components/Navbar.php')):
-          die('File <b>views/panel/components/Navbar.php</b> missing!');
-        elseif(!file_exists(APPPATH . 'views/panel/components/Sidebar.php')):
-          die('File <b>views/panel/components/Sidebar.php</b> missing!');
-        endif; 
+      <?php
+        if (file_exists(APPPATH.'views/panel/components/Sidebar.php') && file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            $this->load->view('panel/components/Navbar');
+            $this->load->view('panel/components/Sidebar');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Navbar.php')) {
+            exit('File <b>views/panel/components/Navbar.php</b> missing!');
+        } elseif (!file_exists(APPPATH.'views/panel/components/Sidebar.php')) {
+            exit('File <b>views/panel/components/Sidebar.php</b> missing!');
+        }
       ?>
       <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Serwery</h1>
           </div>
-          <?php if(file_exists(APPPATH . 'views/panel/components/TopAlerts.php')):
-            $this->load->view('panel/components/TopAlerts');
-          else:
-            die('File <b>views/panel/components/TopAlerts.php</b> missing!');
-          endif ?>
+          <?php if (file_exists(APPPATH.'views/panel/components/TopAlerts.php')) {
+          $this->load->view('panel/components/TopAlerts');
+      } else {
+          exit('File <b>views/panel/components/TopAlerts.php</b> missing!');
+      } ?>
           <div class="row">
             <div class="col-md-10 col-sm-12 mr-auto ml-auto">
                 <div class="card">
@@ -34,9 +34,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <?php if(!$servers): ?>
+                        <?php if (!$servers) { ?>
                             <h4 class="divshop-no-data"><i class="bi bi-exclamation-circle"></i> Aktualnie nie ma żadnych serwerów do wyświetlenia!</h4>
-                        <?php else: ?>
+                        <?php } else { ?>
                             <div class="table-responsive">
                                 <table class="table text-center table-md d-md-table mb-0">
                                     <thead>
@@ -53,7 +53,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($servers as $server): ?>
+                                        <?php foreach ($servers as $server) { ?>
                                             <tr>
                                                 <td class="pt-3">#<?php echo $server['id']; ?></td>
                                                 <td class="pt-3"><?php echo $server['name']; ?></td>
@@ -62,15 +62,19 @@
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </td>
-                                                <?php if(isset($server['status'])): ?>
+                                                <?php if (isset($server['status'])) { ?>
                                                     <td class="d-block" style="margin-top:4px;"><span class="badge badge-success badge-server"><i class="bi bi-check2"></i> Online</span></td>
-                                                    <td><span class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php if($server['serverVersion'] == null): echo $server['status']['version']; else: echo $server['serverVersion'] . ' (Własne)'; endif; ?>"><i class="fas fa-eye"></i></span></td>
-                                                    <td class="pt-3" style="position:relative;top:-1px;"><?php echo $server['status']['onlinePlayers'] . '/' . $server['status']['maxPlayers']; ?></td>
-                                                <?php else: ?>
+                                                    <td><span class="btn btn-primary btn-sm" data-toggle="tooltip" title="<?php if ($server['serverVersion'] == null) {
+          echo $server['status']['version'];
+      } else {
+          echo $server['serverVersion'].' (Własne)';
+      } ?>"><i class="fas fa-eye"></i></span></td>
+                                                    <td class="pt-3" style="position:relative;top:-1px;"><?php echo $server['status']['onlinePlayers'].'/'.$server['status']['maxPlayers']; ?></td>
+                                                <?php } else { ?>
                                                     <td class="d-block" style="margin-top:4px;"><span class="badge badge-danger badge-server"><i class="bi bi-x"></i> Offline</span></td>
                                                     <td class="pt-3" data-toggle="tooltip" title="Not available">n/a</td>
                                                     <td class="pt-3" data-toggle="tooltip" title="Not available">n/a</td>
-                                                <?php endif; ?>
+                                                <?php } ?>
                                                 <td>
                                                     <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#divsServerConnectionSettingsID<?php echo $server['id']; ?>">
                                                         <i class="fas fa-eye"></i>
@@ -92,11 +96,11 @@
                                                     <?php echo form_close(); ?>
                                                 </td>
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
